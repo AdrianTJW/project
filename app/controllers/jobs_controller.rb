@@ -5,10 +5,10 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
-    @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
-      marker.lat job.latitude
-      marker.lng job.longitude
-      marker.infowindow job.company_name
+    # @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
+    #   marker.lat job.latitude
+    #   marker.lng job.longitude
+    #   marker.infowindow job.company_name
   end
 
   # GET /jobs/1
@@ -46,7 +46,7 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1.json
   def update
     respond_to do |format|
-      if @job.update(job_params)
+      if @job.update(send("#{@job.type.underscore.to_sym}_params"))
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
@@ -67,13 +67,13 @@ class JobsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_job
-      @job = Job.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_job
+    @job = Job.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def job_params
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def job_params
     params.require(:job).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :images, :start_date, :end_date, :host_id, :user_id, :content_id)
   end
 
@@ -92,4 +92,5 @@ class JobsController < ApplicationController
   def bootcamp_params
     params.require(:bootcamp).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :images, :start_date, :end_date, :host_id, :user_id, :content_id)
   end
+  
 end
