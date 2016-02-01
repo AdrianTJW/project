@@ -2,6 +2,7 @@ class Job < ActiveRecord::Base
 	TYPES = %w( WorkingHoliday Internship Volunteering Bootcamp )
 	belongs_to :user
 	belongs_to :host
+  searchkick
 end
 
 class WorkingHoliday < Job
