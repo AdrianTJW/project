@@ -15,6 +15,10 @@
 //= require turbolinks
 //= require foundation
 //= require_tree .
+//= require underscore
+//= require gmaps/google
+//= require geocomplete
 $(function() {
   $(document).foundation();
+  $("#geo-input").geocomplete();
 });
