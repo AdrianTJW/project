@@ -1,4 +1,5 @@
 <%# add navigation links to this file %>
+
 <% if current_user %>
 	<%= link_to "Log out - User", destroy_user_session_path ,method: :delete %>
 <% elsif current_host %>
@@ -9,8 +10,10 @@
 <% elsif current_admin %>
 	<%= link_to "Log out - Admin", destroy_admin_session_path ,method: :delete %>
 <% else %>
-	<%= link_to "New - User", new_user_registration_path %>
-	<%= link_to "New - Host", new_host_registration_path %>
-	<%= link_to "Sign in - User", new_user_session_path %>
-	<%= link_to "Sign in - Host", new_host_session_path %>
+<div class="transparent">
+	<li> <a href="/users/sign_up"> Sign Up </a> </li>
+	<li> <%= link_to "Becoming Host",new_host_registration_path %> </li>
+	<li> <%= link_to "Sign in", new_user_session_path %> </li>
+	<li> <%= link_to "Login as Host", new_host_session_path %> </li>
+	</div>
 <% end %>
