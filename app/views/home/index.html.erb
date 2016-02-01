@@ -18,3 +18,13 @@
 <% end %>
 
 <%= link_to "New admin", new_admin_registration_path %>
+
+<div class="listings-search">
+		<h1>Search Jobs</h1>
+			<%= form_tag job_index_path, method: :get do %>
+		<div class="form-group">
+			<%= text_field_tag :query, params[:query], class: 'form-control', id: "listing-search", autocomplete: "off" %>
+			<%= submit_tag 'Search', class: 'btn btn-primary' %>
+		</div>
+		<% end %>
+	</div>
