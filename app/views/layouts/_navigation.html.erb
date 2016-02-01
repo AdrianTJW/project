@@ -1,11 +1,11 @@
 <%# navigation styled for Zurb Foundation 5 %>
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
-    <li class="name"><%= link_to 'Home', root_path %></li>
+    <li style="background: transparent;"><a href="/"><img src="http://i.imgur.com/aOb0b7C.png" height="50" width="100" style="margin-left: 20px; margin-top: 10px;"></a></li>
     <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
   <div class="top-bar-section">
-    <ul>
+    <ul class="right">
       <%= render 'layouts/navigation_links' %>
     </ul>
   </div>
