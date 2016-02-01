@@ -1,17 +1,17 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
-
+<% if current_user %>
+	<%= link_to "View jobs", jobs_path %>
+	<%= link_to "Log out - User", destroy_user_session_path ,method: :delete %>
+<% elsif current_host %>
+	<% if current_host.verify_status == true %>
+		<%= link_to "Host jobs", new_job_path %>
+	<% end %>
+	<%= link_to "View jobs", jobs_path %>
+	<%= link_to "Log out - Host", destroy_host_session_path ,method: :delete %>
+<% end %>
 
 
 <%= link_to "New admin", new_admin_registration_path %>
 
-<div class="listings-search">
-		<h1>Search Jobs</h1>
-			<%= form_tag job_index_path, method: :get do %>
-		<div class="form-group">
-			<%= text_field_tag :query, params[:query], class: 'form-control', id: "listing-search", autocomplete: "off" %>
-			<%= submit_tag 'Search', class: 'btn btn-primary' %>
-		</div>
-		<% end %>
-	</div>
