@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :jobs
+  resources :working_holidays, controller: 'jobs', type: 'WorkingHoliday'
+  resources :internships, controller: 'jobs', type: 'Internship'
+  resources :volunteerings, controller: 'jobs', type: 'Volunteering'
+  resources :bootcamps, controller: 'jobs', type: 'Bootcamp'
+  
+  resources :contents
   devise_for :admins
   devise_for :hosts
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

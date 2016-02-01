@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20160201065243) do
     t.string   "city"
     t.string   "type"
     t.string   "job_name"
+    t.integer  "salary"
     t.json     "images"
     t.date     "start_date"
     t.date     "end_date"
