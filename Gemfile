@@ -26,6 +26,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # foundation front end framework
 gem 'foundation-rails'
+
+# search function gem
+gem 'searchkick'
+
 # hides app ids and secrets
 gem "figaro"
 # facebook login

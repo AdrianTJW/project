@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :transactions, only: [:new, :create]
   devise_for :admins
   devise_for :hosts
+  resources :jobs
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'home/index'
 
