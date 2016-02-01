@@ -10,6 +10,19 @@ class JobsController < ApplicationController
        marker.lng job.longitude
        marker.infowindow job.company_name
      end
+
+    # @jobs = Job.all
+    # @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
+    #   marker.lat job.latitude
+    #   marker.lng job.longitude
+    #   marker.infowindow job.company_name
+    if params[:query].present?
+      @jobs = Job.search(params[:query], page: params[:page])
+    else
+      # @jobs = Job.all.page params[:page]
+      @jobs = Job.all
+    end
+
   end
 
   # GET /jobs/1

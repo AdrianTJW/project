@@ -4,6 +4,7 @@ after_validation :geocode          # auto-fetch coordinates
 	TYPES = %w( WorkingHoliday Internship Volunteering Bootcamp )
 	belongs_to :user
 	belongs_to :host
+  searchkick
 end
 
 class WorkingHoliday < Job
