@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'transactions/new'
+
   resources :jobs
   resources :working_holidays, controller: 'jobs', type: 'WorkingHoliday'
   resources :internships, controller: 'jobs', type: 'Internship'
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
   resources :bootcamps, controller: 'jobs', type: 'Bootcamp'
   
   resources :contents
+  resources :transactions, only: [:new, :create]
   devise_for :admins
   devise_for :hosts
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
