@@ -17,6 +17,10 @@ class JobsController < ApplicationController
     end
   end
 
+  def autocomplete
+    render json: Job.search(params[:query], autocomplete: true, limit: 10).map(&:country)
+  end
+
   # GET /jobs/1
   # GET /jobs/1.json
   def show
