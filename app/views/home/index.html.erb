@@ -2,7 +2,6 @@
 <p>Find me in app/views/home/index.html.erb</p>
 
 <% if current_user %>
-	<%= link_to "View jobs", jobs_path %>
 	<%= link_to "Log out - User", destroy_user_session_path ,method: :delete %>
 <% elsif current_host %>
 	<% if current_host.verify_status == true %>
