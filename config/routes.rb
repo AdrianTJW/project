@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :jobs
+  resources :contents
   devise_for :admins
   devise_for :hosts
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
