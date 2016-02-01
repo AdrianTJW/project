@@ -14,12 +14,63 @@
  *= require_self
  */
 
+ .travork {
+  background-image:url(http://cdn.pcwallart.com/images/australia-mountain-scenery-wallpaper-3.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+n1 {
+  font-family: 'Raleway';
+  font-size: 100px;
+  color: white;
+  text-align: center;
+}
+
+n2 {
+	font-family: 'Raleway';
+  font-size: 40px;
+  color: white;
+  text-align: center;
+}
+
+.n3 {
+	font-family: 'Raleway';
+  font-size: 30px;
+  color: black;
+}
+
+.n4 {
+	font-family: 'Raleway';
+  font-size: 20px;
+  color: #242424;
+}
+
+label {
+    color: #4d4d4d;
+    cursor: pointer;
+    display: block;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 0.5;
+    margin-bottom: 0.2px;
+}
+
+.field {
+	text-align: left;
+	font-family: 'Raleway';
+  font-size: 25px;
+  color: #242424;
+}
 .adjust-top {
   margin-top: 10px;
 }
 
 .logo {
-	line-height: 2.8125rem;
+		line-height: 2.8125rem;
     padding: 0 0.9375rem;
 }
 .top-bar {
