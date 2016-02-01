@@ -34,6 +34,8 @@ gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 # increase cookie size
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+# payment gateway
+gem 'braintree'
 
 
 
