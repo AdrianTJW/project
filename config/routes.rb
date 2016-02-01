@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
   get 'transactions/new'
 
-  resources :jobs
+  resources :jobs do
+    collection do
+      post :import
+      get :autocomplete # <= add this line
+    end
+  end
+
+
   resources :working_holidays, controller: 'jobs', type: 'WorkingHoliday'
   resources :internships, controller: 'jobs', type: 'Internship'
   resources :volunteerings, controller: 'jobs', type: 'Volunteering'
