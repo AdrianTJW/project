@@ -11,9 +11,20 @@
 	<%= link_to "Log out - Admin", destroy_admin_session_path ,method: :delete %>
 <% else %>
 <div class="transparent">
-	<li> <a href="/users/sign_up"> Sign Up </a> </li>
-	<li> <%= link_to "Becoming Host",new_host_registration_path %> </li>
+	<li> <a href="#" data-reveal-id="signup"> Sign Up </a> </li>
+		<div id="signup" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+			<div class="column large-6 panel">
+				<%= link_to "Sign Up as Host", new_host_registration_path %>
+			</div>
+			<div class="column large-6 panel">
+				<%= link_to "Sign Up as User", new_user_registration_path %>
+			</div>
+
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
 	<li> <%= link_to "Sign in", new_user_session_path %> </li>
 	<li> <%= link_to "Login as Host", new_host_session_path %> </li>
+	<li> <%= link_to "New admin", new_admin_registration_path %> </li>
 	</div>
 <% end %>

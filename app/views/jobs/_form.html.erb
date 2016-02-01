@@ -1,3 +1,5 @@
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script src="jquery.geocomplete.js"></script>
 <%= form_for(@job) do |f| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
@@ -21,8 +23,16 @@
   </div>
   <div class="field">
     <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, id: "special"%>
   </div>
+  <div style='width: 800px;'>
+    <div id="map" style='width: 800px; height: 400px;'></div>
+  </div>
+  <script type='text/javascript'>
+    $("#special").geocomplete({
+    map: "#map"
+  });
+  </script>
   <div class="field">
     <%= f.label :country %><br>
     <%= f.text_field :country %>
@@ -30,6 +40,14 @@
   <div class="field">
     <%= f.label :city %><br>
     <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.number_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.number_field :longitude %>
   </div>
   <div class="field">
     <%= f.label :type %><br>
@@ -59,3 +77,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+
