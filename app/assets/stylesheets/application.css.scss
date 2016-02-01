@@ -16,3 +16,45 @@
 /*Desktop*/
 /*General*/
 
+.adjust-top {
+  margin-top: 10px;
+}
+
+.logo {
+	line-height: 2.8125rem;
+    padding: 0 0.9375rem;
+}
+.top-bar {
+	background: #3CC2A7;
+}
+
+.top-bar.expanded {
+    height: auto;
+    background: #3CC2A7; }
+.top-bar.expanded .title-area {
+      background: #3CC2A7; }
+
+.top-bar-section ul li{
+    background-color: #3CC2A7;
+    color: #FFFFFF;
+    background: #3CC2A7;
+}
+
+.top-bar-section ul li:hover:not(.has-form) > a {
+    background-color: #009481;
+    color: #FFFFFF;
+    background: #009481;
+    }
+
+@media only screen and (min-width: 40.0625em) {
+.top-bar-section li:not(.has-form) a:not(.button):not(.submit):not(.button-xs) {
+    background: #3CC2A7;
+    line-height: 2.8125rem;
+    padding: 0 0.9375rem;
+}
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):not(.submit):not(.button-xs):hover {
+    background-color: #009481;
+    background: #009481;
+}

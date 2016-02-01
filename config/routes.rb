@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :hosts
   devise_for :users
+  resources :jobs
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
