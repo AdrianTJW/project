@@ -17,10 +17,6 @@
       <%= f.text_field :fullname %>
     </div>
     <div class="field">
-      <%= f.label :password %><br>
-      <%= f.password_field :password %>
-    </div>
-    <div class="field">
       <%= f.label :email %><br>
       <%= f.text_field :email %>
     </div>
@@ -38,4 +34,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  <%= link_to "Change your password", edit_user_registration_path %>
 <% end %>

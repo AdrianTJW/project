@@ -10,20 +10,18 @@ class JobsController < ApplicationController
        marker.lng job.longitude
        marker.infowindow [job.company_name, job.address]
        #marker.infowindow job.address
-     end
+    end
 
-    # @jobs = Job.all
-    # @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
-    #   marker.lat job.latitude
-    #   marker.lng job.longitude
-    #   marker.infowindow job.company_name
     if params[:query].present?
       @jobs = Job.search(params[:query], page: params[:page])
     else
       # @jobs = Job.all.page params[:page]
       @jobs = Job.all
     end
+  end
 
+  def my_index
+    @jobs = Job.where(host_id: current_host.id)
   end
 
   def autocomplete

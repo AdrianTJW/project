@@ -1,9 +1,12 @@
 <div class="travork">
 	<div class="row">
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 7d05f6c714babb9d7e4b565fa25e52c2ebbeba27
 <div class="column large-12 medium-12 small-12" style="padding-top: 75px;">
 <n1>Travel Differently</n1>
 </div>
@@ -21,10 +24,17 @@
 		<div class="form-group">
 			<%= text_field_tag :query, params[:query], class: 'form-control', placeholder: "Where you want to go?",  autocomplete: "off" %>
 			<% end %>
+
 <!-- 		<div class="column large-4 small-12">
 			<%= submit_tag 'Start your journey here!', class: 'primary button' %>
 		</div> -->
 
+
+		</div>
+		<div class="column large-4 small-12">
+			<%= submit_tag 'Start your journey here!', class: 'primary button' %>
+		</div>
+		
 	</div>
 </div>
 
@@ -41,9 +51,3 @@
     <%= link_to "View profile", host_path(current_host.id) %>
     <%= link_to "Log out - Host", destroy_host_session_path ,method: :delete %>
 <% end %>
-
-
-
-
-	
-

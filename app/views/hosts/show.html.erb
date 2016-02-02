@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<% current_host.image %>
+<%= current_host.image %>
 <%= current_host.fullname %>
 <%= current_host.email %>
 <%= current_host.contact %>
 
-
 <%= link_to 'Edit', edit_host_path(@host) %> |
-<%= link_to 'My applications', edit_host_path(@host) %> |
-<%= link_to 'Back', hosts_path %>
+<%= link_to 'My jobs', my_jobs_path(@host) %> |
+<%= link_to 'Back', root_path %>
