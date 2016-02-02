@@ -31,7 +31,10 @@
        <td><%= job.type %></td>
        <td><%= job.job_name %></td>
        <td><%= job.salary %></td>
-       <td><%= job.images %></td>
+       <td>
+        <% job.images.each do |x|%>
+        <a href="<%= x.url %>"><%= image_tag x.url %></a>
+    <% end %></td>
        <td><%= job.start_date %></td>
        <td><%= job.end_date %></td>
        <td><%= link_to 'Show', job %></td>
