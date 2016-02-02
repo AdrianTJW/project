@@ -37,12 +37,17 @@
 <%= link_to "New admin", new_admin_registration_path %>
 
 	<div class="listings-search">
-		<h1>Search Job/h1>
+		<h1>Search Job</h1>
 			<%= form_tag jobs_path, method: :get do %>
-		<div class="form-group">
+		<div class="row">
+    		<div class="large-8 medium-8 small-8 columns">
 			<%= text_field_tag :query, params[:query], class: 'form-control', id: "listing-search", autocomplete: "off" %>
-			<%= submit_tag 'Search', class: 'btn btn-primary' %>
+			</div>
+			<div class="large-4 medium-4 small-4 columns">
+			<%= submit_tag 'Search', class: 'button' %>
+			</div>
+		
 		</div>
 		<% end %>
 	</div>
-
+<br><br><br>
