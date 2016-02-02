@@ -3,43 +3,48 @@
 <h1>Listing Jobs</h1>
 
 <table>
- <thead>
-   <tr>
-     <th>Company name</th>
-     <th>Description</th>
-     <th>Address</th>
-     <th>Country</th>
-     <th>City</th>
-     <th>Type</th>
-     <th>Job name</th>
-     <th>Salary</th>
-     <th>Images</th>
-     <th>Start date</th>
-     <th>End date</th>
-     <th colspan="3"></th>
-   </tr>
- </thead>
+  <thead>
+    <tr>
+      <th>Company name</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Type</th>
+      <th>Job name</th>
+      <th>Salary</th>
+      <th>Images</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
- <tbody>
-   <% @jobs.each do |job| %>
-     <tr>
-       <td><%= job.company_name %></td>
-       <td><%= job.description %></td>
-       <td><%= job.address %></td>
-       <td><%= job.country %></td>
-       <td><%= job.city %></td>
-       <td><%= job.type %></td>
-       <td><%= job.job_name %></td>
-       <td><%= job.salary %></td>
-       <td><%= job.images %></td>
-       <td><%= job.start_date %></td>
-       <td><%= job.end_date %></td>
-       <td><%= link_to 'Show', job %></td>
-       <td><%= link_to 'Edit', edit_job_path(job) %></td>
-       <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-     </tr>
-   <% end %>
- </tbody>
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.company_name %></td>
+        <td><%= job.description %></td>
+        <td><%= job.address %></td>
+        <td><%= job.country %></td>
+        <td><%= job.city %></td>
+        <td><%= job.type %></td>
+        <td><%= job.job_name %></td>
+        <td><%= job.salary %></td>
+        <td><%= job.images %></td>
+        <td><%= job.start_date %></td>
+        <td><%= job.end_date %></td>
+        <% if current_host || current_admin %>
+          <td><%= link_to 'Show', job %></td>
+          <td><%= link_to 'Edit', edit_job_path(job) %></td>
+          <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        <% if current_user %>
+          <td><%= link_to 'More details...', job %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <br>
@@ -92,6 +97,6 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 </script>
 
 
-
-
-<%= link_to 'New Job', new_job_path %>
+<% if current_host && current_host.verify_status == true %>
+  <%= link_to 'Post job', new_job_path %>
+<% end %>

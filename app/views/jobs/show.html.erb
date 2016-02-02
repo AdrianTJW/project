@@ -64,5 +64,11 @@
   <%= @job.end_date %>
 </p>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
+<% if current_host && current_host.verify_status == true %>
+  <%= link_to 'Edit', edit_job_path(@job) %> |
+<% end %>
+
+<% if current_user %>
+  <%= link_to 'Apply', edit_job_path(@job) %> |
+<% end %>
 <%= link_to 'Back', jobs_path %>
