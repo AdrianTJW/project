@@ -1,30 +1,32 @@
 <%# add navigation links to this file %>
 
 <% if current_user %>
-	<%= link_to "Log out - User", destroy_user_session_path ,method: :delete %>
+	<n3>Welcome,<%= current_user.email %>!</n3>
+	<li> <%= link_to "Log out - User", destroy_user_session_path ,method: :delete %> </li>
 <% elsif current_host %>
 	<% if current_host.verify_status == true %>
 		<%= link_to "Host jobs", new_job_path %>
 	<% end %>
-	<%= link_to "Log out - Host", destroy_host_session_path ,method: :delete %>
+	<li> <%= link_to "Log out - Host", destroy_host_session_path ,method: :delete %> </li>
 <% elsif current_admin %>
 	<%= link_to "Log out - Admin", destroy_admin_session_path ,method: :delete %>
 <% else %>
 <div class="transparent">
 	<li> <a href="#" data-reveal-id="signup"> Sign Up </a> </li>
 		<div id="signup" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-			<div class="column large-6 panel">
-				<%= link_to "Sign Up as Host", new_host_registration_path %>
+			<div class="column large-4 small-12">
+				<a href="/users/sign_up"><button class="small button">Sign Up as User</button></a>
 			</div>
-			<div class="column large-6 panel">
-				<%= link_to "Sign Up as User", new_user_registration_path %>
+			<div class="column large-4 small-12">
+				<a href="/hosts/sign_up"><button class="small button">Sign Up as Host</button></a>
 			</div>
-
+			<div class="column large-4 small-12">
+				<a href="/admins/sign_up"><button class="small button">Sign Up as Admin</button></a>
+			</div>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
 
 	<li> <%= link_to "Sign in", new_user_session_path %> </li>
 	<li> <%= link_to "Login as Host", new_host_session_path %> </li>
-	<li> <%= link_to "New admin", new_admin_registration_path %> </li>
 	</div>
 <% end %>

@@ -22,3 +22,8 @@ $(function() {
   $(document).foundation();
   $("#geo-input").geocomplete();
 });
+
+braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
+  container: "dropin-container",
+  form: "checkout-form"
+});

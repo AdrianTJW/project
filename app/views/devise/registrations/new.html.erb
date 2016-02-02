@@ -1,6 +1,6 @@
 <div class="row panel" style="line-height: 0.6;">
 <h2 class="n3">Sign up</h2>
-<div class="column panel large-10 small-12" style="background: white;">
+<div class="column panel large-12 small-12" style="background: white;">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
   
@@ -32,8 +32,8 @@
     </div>
 
     <div class="field">
-      <%= f.label :image %><br />
-      <%= f.file_field :image %>
+      <n3><%= f.label :image %></n3><br />
+      <n3><%= f.file_field :image %></n3>
     </div>
   <% end %>
 
