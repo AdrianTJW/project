@@ -105,6 +105,7 @@
 .input-group.input-group-lg .twitter-typeahead:last-child .tt-hint {
   border-radius: 0 6px 6px 0 !important;
 }
+
 .input-group.input-group-lg .tt-query,
 .input-group.input-group-lg .tt-hint {
   height: 45px;
@@ -147,8 +148,9 @@
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
 }
-.tt-suggestion.tt-is-under-cursor a {
+.tt-suggestion.tt-cursor a {
   color: #fff;
+  background-color: #0097cf;
 }
 .tt-suggestion p {
   margin: 0;
@@ -156,4 +158,9 @@
 
 .tt-hint {
 	top: 40px !important;
+  background: transparent !important;
+}
+
+.tt-query {
+  background-color: white !important;
 }
