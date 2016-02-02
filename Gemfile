@@ -27,7 +27,8 @@ gem 'devise'
 # foundation front end framework
 gem 'foundation-rails'
 # carrierwave for image uploading
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
 # search function gem
 gem 'searchkick'
 
