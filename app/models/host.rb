@@ -4,4 +4,5 @@ class Host < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :jobs
+  mount_uploader :image, ImageUploader
 end

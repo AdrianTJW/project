@@ -1,7 +1,7 @@
 <%# add navigation links to this file %>
 
 <% if current_user %>
-	<n3>Welcome,<%= current_user.email %>!</n3>
+	<li style="margin-top: 8px;"> <img style="border-radius: 100%;" src="<%= current_user.image.url(:thumb) %>"><n3 style="color: white;">Welcome, <%= current_user.fullname %>!</n3> </li>
 	<li> <%= link_to "Log out - User", destroy_user_session_path ,method: :delete %> </li>
 <% elsif current_host %>
 	<% if current_host.verify_status == true %>
@@ -11,6 +11,7 @@
 <% elsif current_admin %>
 	<%= link_to "Log out - Admin", destroy_admin_session_path ,method: :delete %>
 <% else %>
+
 <div class="transparent">
 	<li> <a href="#" data-reveal-id="signup"> Sign Up </a> </li>
 		<div id="signup" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
@@ -23,10 +24,10 @@
 			<div class="column large-4 small-12">
 				<a href="/admins/sign_up"><button class="small button">Sign Up as Admin</button></a>
 			</div>
-  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-</div>
+  		<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+		</div>
 
 	<li> <%= link_to "Sign in", new_user_session_path %> </li>
 	<li> <%= link_to "Login as Host", new_host_session_path %> </li>
-	</div>
+</div>
 <% end %>

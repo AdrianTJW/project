@@ -31,7 +31,11 @@
         <td><%= job.type %></td>
         <td><%= job.job_name %></td>
         <td><%= job.salary %></td>
-        <td><%= job.images %></td>
+        <td>
+          <% job.images.each do |x|%>
+            <a href="<%= x.url %>"><%= image_tag x.url %></a>
+          <% end %>
+        </td>
         <td><%= job.start_date %></td>
         <td><%= job.end_date %></td>
         <% if current_host || current_admin %>
@@ -55,47 +59,43 @@
 <div id='sidebar_container'></div>
 
 <script type='text/javascript'>
+  function createSidebarLi(json){
+   return ("<li><a>" + json.infowindow + "</a></li>");
+  };
 
-function createSidebarLi(json){
- return ("<li><a>" + json.infowindow + "</a></li>");
-};
+  function bindLiToMarker($li, marker){
+    $li.on('click', function(){
+      handler.getMap().setZoom(5);
+      marker.setMap(handler.getMap()); //because clusterer removes map property from marker
+      marker.panTo();
+      google.maps.event.trigger(marker.getServiceObject(), 'click');
+    })
+  };
 
-function bindLiToMarker($li, marker){
-  $li.on('click', function(){
-    handler.getMap().setZoom(5);
-    marker.setMap(handler.getMap()); //because clusterer removes map property from marker
-    marker.panTo();
-    google.maps.event.trigger(marker.getServiceObject(), 'click');
-  })
-};
+  function createSidebar(json_array){
+    _.each(json_array, function(json){
+      var $li = $( createSidebarLi(json) );
+      $li.appendTo('#sidebar_container');
+      bindLiToMarker($li, json.marker);
+    });
+  };
 
-function createSidebar(json_array){
-  _.each(json_array, function(json){
-    var $li = $( createSidebarLi(json) );
-    $li.appendTo('#sidebar_container');
-    bindLiToMarker($li, json.marker);
-  });
-};
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    var json_array = <%=raw @hash.to_json %>;
 
-handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  var json_array = <%=raw @hash.to_json %>;
+    var markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    // markers = handler.addMarkers(<%=raw @hash.to_json %>);
 
-  var markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  // markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    _.each(json_array, function(json, index){
+     json.marker = markers[index];
+    });
 
-  _.each(json_array, function(json, index){
-   json.marker = markers[index];
-  });
-
-  createSidebar(json_array);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
-
-   
+    createSidebar(json_array);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });    
 </script>
-
 
 <% if current_host && current_host.verify_status == true %>
   <%= link_to 'Post job', new_job_path %>
