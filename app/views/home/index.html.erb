@@ -13,16 +13,14 @@
 <div class="column large-4 medium-6 small-12">
 <%= text_field_tag 'name', nil, placeholder: "What you want to do?"  %>
 </div>
-<div class="column large-4 medium-6 small-12">
-	<div class="listings-search">
+<div class="column large-4 small-12">
+
 			<%= form_tag jobs_path, method: :get do %>
-		<div class="form-group">
-			<%= text_field_tag :query, params[:query], class: 'form-control', placeholder: "Where you want to go?", id: "listing-search", autocomplete: "off" %>
-		</div>
-	</div>
+		
+			<%= text_field_tag :query, params[:query], class: 'form-control', placeholder: "Where you want to go?", autocomplete: "off" %>
 </div>
 <div class="column large-4 small-12">
-<%= submit_tag 'Start your journey here!', class: 'primary button' %>
+<%= submit_tag 'Start your journey here!', class: 'button' %>
 	<% end %>
 </div>
 </div>
