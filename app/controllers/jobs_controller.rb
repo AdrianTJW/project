@@ -8,7 +8,8 @@ class JobsController < ApplicationController
      @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
        marker.lat job.latitude
        marker.lng job.longitude
-       marker.infowindow job.company_name
+       marker.infowindow [job.company_name, job.address]
+       #marker.infowindow job.address
      end
 
     # @jobs = Job.all
@@ -23,6 +24,10 @@ class JobsController < ApplicationController
       @jobs = Job.all
     end
 
+  end
+
+  def autocomplete
+    render json: Job.search(params[:query], autocomplete: true, limit: 10).map(&:country)
   end
 
   # GET /jobs/1
