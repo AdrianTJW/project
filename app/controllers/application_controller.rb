@@ -21,7 +21,7 @@ class UserParams < Devise::ParameterSanitizer
 	end
 
 	def sign_up
-		default_params.permit(:fullname, :contact, :image, :email, :password, :password_confirmation)
+		default_params.permit(:fullname, :contact, :image, :email, :password, :password_confirmation, :avatar)
 	end
 
 	def acount_update
