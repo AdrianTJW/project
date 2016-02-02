@@ -11,6 +11,30 @@
     </div>
   <% end %>
 
+  <% if current_user.uid.nil? %>
+    <div class="field">
+      <%= f.label :fullname %><br>
+      <%= f.text_field :fullname %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.file_field :image %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :contact %><br>
+    <%= f.text_field :contact %>
+  </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

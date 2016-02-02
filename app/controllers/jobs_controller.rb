@@ -33,6 +33,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @booking = Booking.new
   end
 
   # GET /jobs/new

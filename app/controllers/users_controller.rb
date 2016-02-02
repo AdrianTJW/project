@@ -4,15 +4,17 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @booking
+    @user = User.find_by(id: current_user.id)
   end
 
   # GET /users/1/edit
   def edit
+    @user = User.find_by(id: current_user.id)
   end
 
   def update
     respond_to do |format|
+      byebug
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
@@ -41,6 +43,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:show, :edit, :update, :destroy)
+      params.require(:user).permit(:fullname, :password, :email, :contact, :image)
     end
 end
