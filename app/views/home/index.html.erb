@@ -17,11 +17,10 @@
 			<%= form_tag jobs_path, method: :get do %>
 		<div class="form-group">
 			<%= text_field_tag :query, params[:query], class: 'form-control', placeholder: "Where you want to go?",  autocomplete: "off" %>
-		<% end %>
+			<% end %>
 		</div>
 		<div class="column large-4 small-12">
 			<%= submit_tag 'Start your journey here!', class: 'primary button' %>
-			<% end%>
 		</div>
 	</div>
 </div>
