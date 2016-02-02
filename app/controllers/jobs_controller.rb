@@ -33,6 +33,7 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @booking = Booking.new
   end
 
   # GET /jobs/new
@@ -93,23 +94,23 @@ class JobsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def job_params
-    params.require(:job).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, :images, :start_date, :end_date, :host_id, :user_id, :content_id)
+    params.require(:job).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, {images: []}, :start_date, :end_date, :host_id, :user_id, :content_id)
   end
 
   def working_holiday_params
-    params.require(:working_holiday).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, :images, :start_date, :end_date, :host_id, :user_id, :content_id)
+    params.require(:working_holiday).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, {images: []}, :start_date, :end_date, :host_id, :user_id, :content_id)
   end
 
   def internship_params
-    params.require(:internship).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, :images, :start_date, :end_date, :host_id, :user_id, :content_id)
+    params.require(:internship).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, {images: []}, :start_date, :end_date, :host_id, :user_id, :content_id)
   end
 
   def volunteering_params
-    params.require(:volunteering).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, :images, :start_date, :end_date, :host_id, :user_id, :content_id)
+    params.require(:volunteering).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, {images: []}, :start_date, :end_date, :host_id, :user_id, :content_id)
   end
 
   def bootcamp_params
-    params.require(:bootcamp).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, :images, :start_date, :end_date, :host_id, :user_id, :content_id)
+    params.require(:bootcamp).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, {images: []}, :start_date, :end_date, :host_id, :user_id, :content_id)
   end
 
 end

@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   get 'transactions/new'
 
   resources :jobs do
+    resources :bookings, except: [:new]
     collection do
       post :import
       get :autocomplete # <= add this line
     end
   end
-
 
   resources :working_holidays, controller: 'jobs', type: 'WorkingHoliday'
   resources :internships, controller: 'jobs', type: 'Internship'
@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   resources :transactions, only: [:new, :create]
   devise_for :admins
   devise_for :hosts
+  resources :hosts, only: [:show, :edit, :update, :destroy]
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  resources :users, only: [:show, :edit, :update, :destroy] do
+    resources :bookings, except: [:new]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -4,13 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook, :google_oauth2]
-
+  mount_uploader :image, ImageUploader
+  has_many :bookings
   def self.from_omniauth(auth)
 	  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
 	    user.email = auth.info.email
 	    user.password = Devise.friendly_token[0,20]
 	    user.fullname = auth.info.name   # assuming the user model has a name
-	    user.image = auth.info.image # assuming the user model has an image
+	    user.remote_image_url = auth.info.image.gsub('http://','https://') # assuming the user model has an image
 	  end
 	end
 

@@ -1,9 +1,10 @@
 class Job < ActiveRecord::Base
 geocoded_by :address   # can also be an IP address
 after_validation :geocode          # auto-fetch coordinates
+mount_uploaders :images, ImageUploader
 	TYPES = %w( WorkingHoliday Internship Volunteering Bootcamp )
-	belongs_to :user
 	belongs_to :host
+  has_many :bookings
   searchkick autocomplete: ['country']
 end
 

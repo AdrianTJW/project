@@ -27,10 +27,10 @@ gem 'devise'
 # foundation front end framework
 gem 'foundation-rails'
 # carrierwave for image uploading
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
 # search function gem
 gem 'searchkick'
-
 # hides app ids and secrets
 gem "figaro"
 # facebook login
@@ -39,17 +39,12 @@ gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
 # increase cookie size
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
-
 # changing normal address to long and lat
 gem 'geocoder'
-
 # payment gateway
 gem 'braintree'
-
-
 # google maps api
 gem 'gmaps4rails'
-
 #autocomplete
 gem 'geocomplete_rails'
 
