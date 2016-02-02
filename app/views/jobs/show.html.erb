@@ -60,5 +60,13 @@
   <%= @job.end_date %>
 </p>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
+<% if current_host && current_host.verify_status == true %>
+  <%= link_to 'Edit', edit_job_path(@job) %> |
+<% end %>
+
+<% if current_user %>
+  <%= form_for @booking, url: user_bookings_path(current_user.id, job_id: params[:id]), method: :post do |x| %>
+    <%= x.submit 'Apply' %>
+  <% end %>
+<% end %>
 <%= link_to 'Back', jobs_path %>
