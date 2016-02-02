@@ -1,11 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-
-<% current_user.image %>
+<%= current_user.image %>
 <%= current_user.fullname %>
 <%= current_user.email %>
 <%= current_user.contact %>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'My applications', user_bookings_path(@user, @booking) %> |
