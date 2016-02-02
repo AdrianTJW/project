@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # foundation front end framework
 gem 'foundation-rails'
+# carrierwave for image uploading
+gem 'carrierwave'
 # search function gem
 gem 'searchkick'
 # hides app ids and secrets
