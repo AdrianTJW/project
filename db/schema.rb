@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202064444) do
+ActiveRecord::Schema.define(version: 20160203075121) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,10 @@ ActiveRecord::Schema.define(version: 20160202064444) do
   create_table "bookings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "job_id"
-    t.boolean  "acceptance", default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "acceptance",  default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "paid_status", default: false
   end
 
   create_table "contents", force: :cascade do |t|
@@ -69,11 +70,12 @@ ActiveRecord::Schema.define(version: 20160202064444) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "fullname"
-    t.integer  "contact"
+    t.string   "contact"
     t.string   "image"
     t.boolean  "verify_status",          default: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.integer  "braintree_host_id"
   end
 
   add_index "hosts", ["email"], name: "index_hosts_on_email", unique: true, using: :btree
@@ -98,6 +100,7 @@ ActiveRecord::Schema.define(version: 20160202064444) do
     t.datetime "updated_at",   null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "zipcode"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -122,12 +125,13 @@ ActiveRecord::Schema.define(version: 20160202064444) do
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
     t.string   "fullname"
-    t.integer  "contact"
+    t.string   "contact"
     t.string   "image"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
+    t.integer  "braintree_customer_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= transactions
 //= require foundation
 //= require_tree .
 //= require underscore
@@ -32,4 +32,5 @@ braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
   container: "dropin-container",
   form: "checkout-form"
 });
+
 

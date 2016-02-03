@@ -17,10 +17,10 @@
         if ($(this).val() == 'WorkingHoliday' || $(this).val() =='Internship') {
           
           $('#salary').show();
-          
+          $('#name').show();
           $('#fee').hide();
         } else {
-          
+          $('#name').hide();
           $('#fee').show();
           $('#salary').hide();
           
@@ -63,7 +63,7 @@
       <%= f.select :type, '<option>-- Select an Option --</option><option value="WorkingHoliday">Working holiday</option><option value="Internship">Internship</option><option value="Volunteering">Volunteering</option><option value="Bootcamp">Bootcamp</option>'.html_safe, id: "job_type"  %>
     </div>
   
-    <div class="field">
+    <div class="field" id="name" style="display: none;">
       <%= f.label :job_name %><br>
       <%= f.text_field :job_name %>
     </div>

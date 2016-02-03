@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     end
 
     if current_host
-      @job = params[:job_id]
+      @job = Job.find_by(id: params[:job_id])
       @user = User.find_by(id: params[:id])
-      @booking = Booking.find_by(user_id: params[:id], job_id: @job)
+      @booking = Booking.find_by(user_id: params[:id], job_id: @job.id)
     end
   end
 

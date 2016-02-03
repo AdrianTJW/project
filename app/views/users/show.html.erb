@@ -30,12 +30,12 @@
 				<p><n3 class="left"> <%= @user.contact %></n3></p>
 			</div>
 			<div class="panel">
-				<% if @booking.acceptance == false %>
-					<%= form_for @booking, url: job_booking_path(@job, @booking.id), method: :patch do |x| %>
-			      <%= x.submit 'Accept application' %>
-			    <% end %>
-			  <% end %>
-				<%= link_to 'Back', job_bookings_path(@job) %>
+				<% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
+					<% if @booking.acceptance == false %>
+						<%= link_to "Accept application", new_transaction_path(job_id: params[:job_id], booking_id: @booking.id) %>
+				  <% end %>
+				<% end %>
+				<%= link_to 'Back', job_bookings_path(@job.id) %>
 			</div>
 		<% end %>
 	</div>
