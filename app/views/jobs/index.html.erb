@@ -1,15 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Jobs</h1>
-  <div class="listings-search">
-      <%= form_tag jobs_path, method: :get do %>
-    <div class="form-group">
-      <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: "Where you want to go?",  autocomplete: "off" %>
-      <% end %>
+<div class="row">
+    
+    <div class="column large-4 medium-6 small-12">
+      <div class="listings-search">
+        <%= form_tag jobs_path, method: :get do %>
+    
+          <%= text_field_tag :query, params[:query], class: 'form-control', placeholder: "Where you want to go?", id: "country", autocomplete: "off" %>
+        
+      </div>
     </div>
-    <div class="column large-4 small-12">
+    <div class="column large-4 medium-6 small-12">
       <%= submit_tag 'Start your journey here!', class: 'primary button' %>
+      <% end%>
     </div>
+  </div>
 </div>
 <table>
   <thead>
@@ -47,7 +53,7 @@
         </td>
         <td><%= job.start_date %></td>
         <td><%= job.end_date %></td>
-        <% if job.host_id == current_host.id || current_admin %>
+        <% if current_host || current_admin %>
           <td><%= link_to 'Show', job %></td>
           <td><%= link_to 'Edit', edit_job_path(job) %></td>
           <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -61,13 +67,11 @@
 </table>
 
 <br>
-<%= will_paginate @jobs%>
 
 <div style='width: 800px;'>
  <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 <div id='sidebar_container'></div>
-
 
 <script type='text/javascript'>
   function createSidebarLi(json){
@@ -76,7 +80,7 @@
 
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
-      handler.getMap().setZoom(10);
+      handler.getMap().setZoom(5);
       marker.setMap(handler.getMap()); //because clusterer removes map property from marker
       marker.panTo();
       google.maps.event.trigger(marker.getServiceObject(), 'click');
@@ -91,12 +95,12 @@
     });
   };
 
-
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     var json_array = <%=raw @hash.to_json %>;
 
     var markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    // markers = handler.addMarkers(<%=raw @hash.to_json %>);
 
     _.each(json_array, function(json, index){
      json.marker = markers[index];
