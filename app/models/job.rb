@@ -7,6 +7,7 @@ mount_uploaders :images, ImageUploader
 	belongs_to :host
   has_many :bookings
   searchkick autocomplete: ['country']
+  self.per_page = 10
 end
 
 class WorkingHoliday < Job
