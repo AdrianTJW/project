@@ -6,17 +6,19 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
-    @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
-    marker.lat job.latitude
-    marker.lng job.longitude
-    marker.infowindow [job.company_name, job.address]
+
+     @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
+       marker.lat job.latitude
+       marker.lng job.longitude
+       marker.infowindow [job.company_name, job.address]
+    end
 
     if params[:query].present?
       @jobs = Job.search(params[:query], page: params[:page])
-    else
-      @jobs = Job.all.page params[:page]
 
-    end
+    else
+
+      @jobs = Job.all.page params[:page]
       # @jobs = Job.all
       # @jobs= @jobs.paginate(per_page: 3, page: params[:page])
     end

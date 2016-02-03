@@ -1,27 +1,33 @@
-<p id="notice"><%= notice %></p>
+
 
 <div class="row">
-	<div class="large-3 small-12 medium-4 columns ">
+	<div class="large-4 small-12 medium-4 column panel" style="background: #bababa;">
 		<% if current_user %>
-			<div class="panel">
-				<%= image_tag current_user.image.url, class: "th" %>
-				<p>Name:    <%= current_user.fullname %></p>
-				<p>Email:   <%= current_user.email %></p>
-				<p>Contact: <%= current_user.contact %></p>
+			<div class="column large-12 medium-12 small-12">
+				<div class="column large-12 medium-12 small-12">
+				<img style="border-radius: 100%;" src="<%= current_user.image.url %>">
+				</div>
+				<div class="column large-12 medium-12 small-12" >
+				<p><n3 class="left" style="color: white;"> <%= current_user.fullname %></n3></p>
+				<p><n3 class="left" style="color: white;"> <%= current_user.email %></n3></p>
+				<p><n3 class="left" style="color: white;"> <%= current_user.contact %></n3></p>
+				</div>
 			</div>
-			<div class="panel">
-				<%= link_to 'Edit', edit_user_path(@user) %> |
-				<%= link_to 'My applications', user_bookings_path(@user, @booking) %> |
-				<%= link_to 'Back', root_path %>
-			</div>
+	
+				<ul class="side-nav left" role="navigation" title="Link List" style="text-align: left; width: 250px;">
+				   <li role="menuitem"><n3><%= link_to 'Edit', edit_user_path(@user) %></n3> </li>
+				   <li role="menuitem"><n3><%= link_to 'My applications', user_bookings_path(@user, @booking) %></n3></li>
+				   <li role="menuitem"><n3><%= link_to 'Back', root_path %></n3></li>
+				</ul>
+	
 		<% end %>
 
 		<% if current_host %>
 			<div class="panel">
-				<%= image_tag "@user.image", class: "th" %>
-				<p>Name:    <%= @user.fullname %></p>
-				<p>Email:   <%= @user.email %></p>
-				<p>Contact: <%= @user.contact %></p>
+				<img style="border-radius: 100%;" src="<%= @user.image.url %>">
+				<p><n3 class="left"> <%= @user.fullname %></n3></p>
+				<p><n3 class="left"> <%= @user.email %></n3></p>
+				<p><n3 class="left"> <%= @user.contact %></n3></p>
 			</div>
 			<div class="panel">
 				<% if @booking.acceptance == false %>
@@ -33,7 +39,7 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="large-9 small-12 medium-8 columns ">
+	<div class="large-8 small-12 medium-8 columns ">
 		
 		<div class="panel">
 			<table>
