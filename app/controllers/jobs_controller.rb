@@ -16,9 +16,10 @@ class JobsController < ApplicationController
       @jobs = Job.search(params[:query], page: params[:page])
 
     else
-      # @jobs = Job.all.page params[:page]
-      @jobs = Job.all
-      @jobs= @jobs.paginate(per_page: 3, page: params[:page])
+
+      @jobs = Job.all.page params[:page]
+      # @jobs = Job.all
+      # @jobs= @jobs.paginate(per_page: 3, page: params[:page])
     end
 
   end
