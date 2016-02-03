@@ -19,7 +19,6 @@ class JobsController < ApplicationController
       @jobs = Job.all
       @jobs= @jobs.paginate(per_page: 3, page: params[:page])
     end
-    
   end
 
   def my_index
