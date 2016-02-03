@@ -1,10 +1,25 @@
 <p id="notice"><%= notice %></p>
+<% if current_user %>
+	<%= current_user.image %>
+	<%= current_user.fullname %>
+	<%= current_user.email %>
+	<%= current_user.contact %>
 
-<%= current_user.image %>
-<%= current_user.fullname %>
-<%= current_user.email %>
-<%= current_user.contact %>
+	<%= link_to 'Edit', edit_user_path(@user) %> |
+	<%= link_to 'My applications', user_bookings_path(@user, @booking) %> |
+	<%= link_to 'Back', root_path %>
+<% end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'My applications', user_bookings_path(@user, @booking) %> |
-<%= link_to 'Back', root_path %>
+<% if current_host %>
+	<%= @user.image %>
+	<%= @user.fullname %>
+	<%= @user.email %>
+	<%= @user.contact %>
+
+	<% if @booking.acceptance == false %>
+		<%= form_for @booking, url: job_booking_path(@job, @booking.id), method: :patch do |x| %>
+      <%= x.submit 'Accept application' %>
+    <% end %>
+  <% end %>
+	<%= link_to 'Back', job_bookings_path(@job) %>
+<% end %>
