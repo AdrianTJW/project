@@ -67,9 +67,15 @@
 <% end %>
 
 <% if current_user %>
-  <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
-    <%= form_for @booking, url: user_bookings_path(current_user.id, job_id: params[:id]), method: :post do |x| %>
-      <%= x.submit 'Apply' %>
+  <% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
+    <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
+      <%= form_for @booking, url: user_bookings_path(current_user.id, job_id: params[:id]), method: :post do |x| %>
+        <%= x.submit 'Apply' %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
+      <%= link_to "Apply", new_transaction_path(:job_id => params[:id]) %>
     <% end %>
   <% end %>
 <% end %>

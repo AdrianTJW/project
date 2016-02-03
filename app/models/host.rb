@@ -5,4 +5,8 @@ class Host < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :jobs
   mount_uploader :image, ImageUploader
+
+  def has_payment_info?
+    braintree_host_id
+  end
 end
