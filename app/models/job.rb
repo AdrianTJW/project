@@ -1,7 +1,17 @@
 class Job < ActiveRecord::Base
 validates :address, presence: true
-geocoded_by :address   # can also be an IP address
-after_validation :geocode          # auto-fetch coordinates
+geocoded_by :address
+reverse_geocoded_by :latitude, :longitude do |obj,results|
+  if geo = results.first
+    byebug
+    obj.city    = geo.city
+    #obj.zipcode = geo.postal_code
+    obj.country = geo.country_code
+  end
+end
+after_validation :geocode, :reverse_geocode
+
+
 mount_uploaders :images, ImageUploader
 	TYPES = %w( WorkingHoliday Internship Volunteering Bootcamp )
 	belongs_to :host
