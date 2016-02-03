@@ -121,7 +121,7 @@ label {
 
 @media only screen and (min-width: 40.0625em) {
 .top-bar-section li:not(.has-form) a:not(.button):not(.submit):not(.button-xs) {
-    background: #3CC2A7;
+    background: transparent;
     line-height: 2.8125rem;
     padding: 0 0.9375rem;
 
@@ -259,3 +259,7 @@ $text-color: #fff;
   overflow:hidden; 
   overflow-y:scroll;
 }
+
+.side-nav li a:not(.button):not(.submit):not(.button-xs) {
+    color: #f2f2f2;
+    }

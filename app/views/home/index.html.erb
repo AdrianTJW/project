@@ -1,20 +1,4 @@
 
-
-
-
-<% if current_user %>
-    <%= link_to "View jobs", jobs_path %>
-    <%= link_to "View profile", user_path(current_user.id) %>
-    <%= link_to "Log out - User", destroy_user_session_path ,method: :delete %>
-<% elsif current_host %>
-    <% if current_host.verify_status == true %>
-        <%= link_to "Host jobs", new_job_path %>
-    <% end %>
-    <%= link_to "View jobs", jobs_path %>
-    <%= link_to "View profile", host_path(current_host.id) %>
-    <%= link_to "Log out - Host", destroy_host_session_path ,method: :delete %>
-<% end %>
-
 <div class="travork">
 	<div class="row">
 
