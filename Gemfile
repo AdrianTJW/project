@@ -46,14 +46,15 @@ gem 'geocoder'
 gem 'braintree'
 # google maps api
 gem 'gmaps4rails'
-#autocomplete
+# autocomplete
 gem 'geocomplete_rails'
-#gem for email
+# gem for email
 gem 'mail'
 gem 'sidekiq'
-
-#pagination
+# pagination
 gem 'will_paginate', '~> 3.0.6'
+# If you need to send some data to your js files and you don't want to do this with long way through views and parsing - use this force!
+gem 'gon'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
