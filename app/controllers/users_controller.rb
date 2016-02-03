@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     end
 
     if current_host
-      @job = params[:job_id]
+      @job = Job.find_by(id: params[:job_id])
       @user = User.find_by(id: params[:id])
-      @booking = Booking.find_by(user_id: params[:id], job_id: @job)
+      @booking = Booking.find_by(user_id: params[:id], job_id: @job.id)
     end
   end
 
@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      byebug
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
