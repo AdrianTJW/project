@@ -61,6 +61,12 @@ n3 {
   color: black;
 }
 
+.n5 {
+  font-family: 'Raleway';
+  font-size: 18px;
+  color: white;
+}
+
 .n3 {
 	font-family: 'Raleway';
   font-size: 30px;
@@ -277,3 +283,6 @@ $text-color: #fff;
  display:none;
 }
 
+.f-dropdown.content.open {
+    background: #009481;
+}

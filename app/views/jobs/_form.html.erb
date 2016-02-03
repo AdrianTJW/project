@@ -42,7 +42,7 @@
     <%= f.label :type %><br>
     <%= f.select :type, '<option>-- Select an Option --</option><option value="WorkingHoliday">Working holiday</option><option value="Internship">Internship</option><option value="Volunteering">Volunteering</option><option value="Bootcamp">Bootcamp</option>'.html_safe, id: "job_type"  %>
     </div>
-  </div>
+  
   <div class="field", id="browserother">
     <%= f.label :job_name %><br>
     <%= f.text_field :job_name %>
@@ -52,7 +52,7 @@
   <div class="row">
     <%= f.label :salary %><br>
     <div class="small-9 medium-10 large-10 columns">
-      <div class="range-slider round" data-slider data-options="display_selector: #job_salary; step: 25; initial: 300; start: 250; end: 1000;">
+      <div class="range-slider round" data-slider data-options="display_selector: #job_salary; step: 50; initial: 600; start: 500; end: 2000;">
         <span class="range-slider-handle"></span>
         <span class="range-slider-active-segment"></span>
       </div>
@@ -119,6 +119,6 @@
     </button>
   </div>
 </div>
-
+</div>
 <% end %>
 

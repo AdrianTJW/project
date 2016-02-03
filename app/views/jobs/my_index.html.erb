@@ -1,48 +1,28 @@
 
-<h1>Listing Jobs</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Company name</th>
-      <th>Description</th>
-      <th>Address</th>
-      <th>Country</th>
-      <th>City</th>
-      <th>Type</th>
-      <th>Job name</th>
-      <th>Salary</th>
-      <th>Images</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<n3>My Jobs</n3>
+<div class="row">
 
-  <tbody>
     <% @jobs.each do |job| %>
-      <tr>
-        <td><%= job.company_name %></td>
-        <td><%= job.description %></td>
-        <td><%= job.address %></td>
-        <td><%= job.country %></td>
-        <td><%= job.city %></td>
-        <td><%= job.type %></td>
-        <td><%= job.job_name %></td>
-        <td><%= job.salary %></td>
-        <td>
-          <% job.images.each do |x|%>
-            <a href="<%= x.url %>"><%= image_tag x.url %></a>
-          <% end %>
-        </td>
-        <td><%= job.start_date %></td>
-        <td><%= job.end_date %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="column large-6 medium-6 small-12 panel">
+        <n3><%= image_tag job.images.first %>
+        <%= job.type %>
+        
+        <%= job.country %>
+        <%= job.city %>
+        <%= job.job_name %>
+        <%= job.salary %>
 
-<%= link_to 'Post job', new_job_path %>
+        <% if current_host || current_admin %>
+          <% if job.host_id == current_host.id || current_admin %>
+            <%= link_to 'Details', job %>
+            <%= link_to 'Edit', edit_job_path(job) %>
+            <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        <% end %>
+        <% if current_user %>
+          <%= link_to 'More details...', job %><n3>
+        <% end %>
+      </div>
+    <% end %>
+</div>
