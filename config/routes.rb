@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/hosts/:host_id/my_jobs' => 'jobs#my_index', as: 'my_jobs'
   resources :working_holidays, controller: 'jobs', type: 'WorkingHoliday'
   resources :internships, controller: 'jobs', type: 'Internship'
   resources :volunteerings, controller: 'jobs', type: 'Volunteering'
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy] do
     resources :bookings, except: [:new]
   end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

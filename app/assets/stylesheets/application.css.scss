@@ -214,3 +214,10 @@ color: #fff; /* choose any height */
 #footer p{
     font-size: 100%;
 }
+
+#sidebar_container {
+  height:50px; 
+  width:18%;
+  overflow:hidden; 
+  overflow-y:scroll;
+}

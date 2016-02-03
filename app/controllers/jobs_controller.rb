@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
 
@@ -9,21 +10,19 @@ class JobsController < ApplicationController
        marker.lat job.latitude
        marker.lng job.longitude
        marker.infowindow [job.company_name, job.address]
-       #marker.infowindow job.address
-     end
+    end
 
-    # @jobs = Job.all
-    # @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
-    #   marker.lat job.latitude
-    #   marker.lng job.longitude
-    #   marker.infowindow job.company_name
     if params[:query].present?
       @jobs = Job.search(params[:query], page: params[:page])
     else
       # @jobs = Job.all.page params[:page]
       @jobs = Job.all
     end
+    @jobs= @jobs.paginate(per_page: 3, page: params[:page])
+  end
 
+  def my_index
+    @jobs = Job.where(host_id: current_host.id)
   end
 
   def autocomplete
@@ -112,5 +111,6 @@ class JobsController < ApplicationController
   def bootcamp_params
     params.require(:bootcamp).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, {images: []}, :start_date, :end_date, :host_id, :user_id, :content_id)
   end
+
 
 end
