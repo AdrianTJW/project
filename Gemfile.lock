@@ -120,6 +120,11 @@ GEM
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     gmaps4rails (2.1.2)
+    gon (6.0.1)
+      actionpack (>= 3.0)
+      json
+      multi_json
+      request_store (>= 1.0)
     hashie (3.4.3)
     i18n (0.7.0)
     ipaddress (0.8.2)
@@ -198,6 +203,7 @@ GEM
     rdoc (4.2.1)
       json (~> 1.4)
     redis (3.2.2)
+    request_store (1.3.0)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     sass (3.4.21)
@@ -261,6 +267,7 @@ DEPENDENCIES
   geocoder
   geocomplete_rails
   gmaps4rails
+  gon
   jbuilder (~> 2.0)
   jquery-rails
   mail

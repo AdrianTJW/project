@@ -33,52 +33,48 @@
 	
 <div class="row" style="max-width: 85%;">
 	<div class="row">
+	<div class="row">
 		<n2 style="color: black; text-align:left;">Travel while working at...</n2>
 	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
-	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
-	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
+		<% @workholiday.last(3).each do |x| %>
+		<div class="left column large-4 medium-4 small-12">
+		<%= x.description %>
+		<%= link_to image_tag("https://store.ragan.com/images/image/Y5TP07.jpg"), x %>
+		</div>
+		<% end %>
 	</div>
 	<div class="row">
+		<div class="row">
 		<n2 style="color: black; text-align:left;">Internship at here...</n2>
 	</div>
-		<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
+		<% @internship.last(3).each do |x| %>
+		<div class="left column large-4 medium-4 small-12">
+		<%= x.description %>
+		<%= link_to image_tag("https://store.ragan.com/images/image/Y5TP07.jpg"), x %>
+		</div>
+		<% end %>
 	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
-	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
-	</div>
-		<div class="row">
+	<div class="row">
+	<div class="row">
 		<n2 style="color: black; text-align:left;">Volunteering experience different here...</n2>
 	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
+	<% @volunteer.last(3).each do |x| %>
+		<div class="left column large-4 medium-4 small-12">
+		<%= x.description %>
+		<%= link_to image_tag("https://store.ragan.com/images/image/Y5TP07.jpg"), x %>
+		</div>
+		<% end %>
 	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
-	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
-	</div>
+	<div class="row">
 	<div class="row">
 		<n2 style="color: black; width: 80%;">World class bootcamp here...</n2>
 	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
-	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
-	</div>
-	<div class="column large-4 medium-4 small-12">
-		<a href="#"><img src="https://store.ragan.com/images/image/Y5TP07.jpg"></a>
+	<% @bootcamp.last(3).each do |x| %>
+		<div class="left column large-4 medium-4 small-12">
+		<%= x.description %>
+		<%= link_to image_tag("https://store.ragan.com/images/image/Y5TP07.jpg"), x %>
+		</div>
+		<% end %>
 	</div>
 </div>
 	
