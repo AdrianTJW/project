@@ -25,6 +25,10 @@ class JobsController < ApplicationController
 
   def my_index
     @jobs = Job.where(host_id: current_host.id)
+        respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
   def autocomplete

@@ -6,5 +6,11 @@
 <%= current_host.contact %>
 
 <%= link_to 'Edit', edit_host_path(@host) %> |
-<%= link_to 'My jobs', my_jobs_path(@host) %> |
+<div id="dot"><%= link_to 'My jobs', my_jobs_path(@host), remote: true%></div> |</div>
 <%= link_to 'Back', root_path %>
+
+<div id = "div_id">
+
+</div>
+
+
