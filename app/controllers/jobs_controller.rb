@@ -6,6 +6,7 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+
      @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
        marker.lat job.latitude
        marker.lng job.longitude
@@ -21,7 +22,6 @@ class JobsController < ApplicationController
       # @jobs = Job.all
       # @jobs= @jobs.paginate(per_page: 3, page: params[:page])
     end
-
   end
 
   def my_index
@@ -55,6 +55,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
+        UserMailer.job_email(@job).deliver_now
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
