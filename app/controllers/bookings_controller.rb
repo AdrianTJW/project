@@ -29,10 +29,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.job.type == "Volunteering" || @booking.job.type == "Bootcamp"
       @booking.update(acceptance: true)
+      UserMailer.booking1_email(@booking).deliver_now
     end
 
     respond_to do |format|
       if @booking.save
+        UserMailer.booking_email(@booking).deliver_now
         format.html { redirect_to jobs_path, notice: 'Application was successfully created.' }
         format.json { render :show, status: :created, location: jobs_path }
       else
@@ -47,6 +49,7 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find_by(id: params[:id])
     @booking.update(acceptance: true)
+    UserMailer.confirm_email(@booking).deliver_now
     redirect_to job_bookings_path(params[:job_id]), notice: 'Application was successfully updated.' 
     # respond_to do |format|
     #   if @booking.update(booking_params)
