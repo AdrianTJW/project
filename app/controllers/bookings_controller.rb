@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
+
     if @booking.job.type == "Volunteering" || @booking.job.type == "Bootcamp"
       @booking.update(acceptance: true)
       UserMailer.booking1_email(@booking).deliver_now

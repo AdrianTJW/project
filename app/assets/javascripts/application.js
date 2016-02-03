@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= transactions
 //= require foundation
 //= require_tree .
 //= require underscore
