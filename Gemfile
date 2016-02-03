@@ -47,6 +47,9 @@ gem 'braintree'
 gem 'gmaps4rails'
 #autocomplete
 gem 'geocomplete_rails'
+#gem for email
+gem 'mail'
+gem 'sidekiq'
 
 #pagination
 gem 'will_paginate', '~> 3.0.6'
