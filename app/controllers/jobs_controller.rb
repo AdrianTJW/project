@@ -6,7 +6,9 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
+    @hosts = Host.all
 
+        
      @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
        marker.lat job.latitude
        marker.lng job.longitude
@@ -26,6 +28,10 @@ class JobsController < ApplicationController
 
   def my_index
     @jobs = Job.where(host_id: current_host.id)
+        respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
   def autocomplete

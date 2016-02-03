@@ -1,6 +1,6 @@
 <%# add navigation links to this file %>
 <% if current_host or current_user or current_admin %>
-	<li style="margin-top: -2px;"> <a href="#" data-dropdown="drop2" >
+	<li style="margin-top: -2px;"> <a href="#1" data-dropdown="drop2" >
 			<% if current_host %>
 			<img style="border-radius: 100%;" src="<%= current_host.image.url(:thumb) %>">
 			<n3 style="color: white;">
@@ -35,7 +35,7 @@
 <% else %>
 
 <div class="transparent">
-	<li> <a href="#" data-reveal-id="signup"> Sign Up </a> </li>
+	<li> <a href="#1" data-reveal-id="signup"> Sign Up </a> </li>
 		<div id="signup" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
 			<div class="column large-4 small-12">
 				<a href="/users/sign_up"><button class="small button">Sign Up as User</button></a>
