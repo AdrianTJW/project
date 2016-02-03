@@ -4,7 +4,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find_by(id: current_user.id)
+    if current_user
+      @user = User.find_by(id: current_user.id)
+    end
+
+    if current_host
+      @job = params[:job_id]
+      @user = User.find_by(id: params[:id])
+      @booking = Booking.find_by(user_id: params[:id], job_id: @job)
+    end
   end
 
   # GET /users/1/edit
