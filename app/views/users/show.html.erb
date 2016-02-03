@@ -1,12 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-
-<% current_user.image %>
-<%= current_user.fullname %>
-<%= current_user.email %>
-<%= current_user.contact %>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'My applications', user_bookings_path(@user, @booking) %> |
-<%= link_to 'Back', root_path %>
+<div class="row">
+	<div class="large-3 small-12 medium-4 columns ">
+		<div class="panel">
+			<%= image_tag "current_user.image", class: "th" %>
+			<p>Name:    <%= current_user.fullname %></p>
+			<p>Email:   <%= current_user.email %></p>
+			<p>Contact: <%= current_user.contact %></p>
+		</div>
+		<div class="panel">
+			<%= link_to 'Edit', edit_user_path(@user) %> |
+			<%= link_to 'My applications', user_bookings_path(@user, @booking) %> |
+			<%= link_to 'Back', root_path %>
+		</div>
+	</div>
+	<div class="large-9 small-12 medium-8 columns ">
+		
+		<div class="panel">
+			<table>
+			  <thead>
+			    <tr>
+			      <th width="200">Table Header</th>
+			      <th>Table Header</th>
+			      <th width="150">Table Header</th>
+			      <th width="150">Table Header</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr>
+			      <td>Content Goes Here</td>
+			      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+			      <td>Content Goes Here</td>
+			      <td>Content Goes Here</td>
+			    </tr>
+			    <tr>
+			      <td>Content Goes Here</td>
+			      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+			      <td>Content Goes Here</td>
+			      <td>Content Goes Here</td>
+			    </tr>
+			    <tr>
+			      <td>Content Goes Here</td>
+			      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+			      <td>Content Goes Here</td>
+			      <td>Content Goes Here</td>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+		<div class="panel">
+			otehr info
+		</div>
+	</div>
+</div>
