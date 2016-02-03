@@ -9,7 +9,8 @@ class BookingsController < ApplicationController
     end
 
     if current_host
-      @bookings = current_host.bookings.all
+      @job = Job.find_by(id: params[:job_id])
+      @bookings = @job.bookings
     end
   end
 
@@ -44,15 +45,18 @@ class BookingsController < ApplicationController
   # PATCH/PUT /bookings/1
   # PATCH/PUT /bookings/1.json
   def update
-    respond_to do |format|
-      if @booking.update(booking_params)
-        format.html { redirect_to @booking, notice: 'Application was successfully updated.' }
-        format.json { render :show, status: :ok, location: @booking }
-      else
-        format.html { render :edit }
-        format.json { render json: @booking.errors, status: :unprocessable_entity }
-      end
-    end
+    @booking = Booking.find_by(id: params[:id])
+    @booking.update(acceptance: true)
+    redirect_to job_bookings_path(params[:job_id]), notice: 'Application was successfully updated.' 
+    # respond_to do |format|
+    #   if @booking.update(booking_params)
+    #     format.html { redirect_to @booking, notice: 'Application was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @booking }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @booking.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /bookings/1

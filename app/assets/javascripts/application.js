@@ -20,10 +20,16 @@
 //= require geocomplete
 $(function() {
   $(document).foundation();
+  
   $("#geo-input").geocomplete();
 });
 
+$('[data-dropdown-content] a').click(function() {
+   var id = $(this).closest('ul').attr('id');
+   $('[data-dropdown=' + id + ']').trigger('click');
+});
 braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
   container: "dropin-container",
   form: "checkout-form"
 });
+

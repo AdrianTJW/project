@@ -60,13 +60,18 @@
   <%= @job.end_date %>
 </p>
 
-<% if current_host && current_host.verify_status == true %>
-  <%= link_to 'Edit', edit_job_path(@job) %> |
+<% if current_host || current_admin %>
+  <% if @job.host_id == current_host.id && current_host.verify_status == true %>
+    <%= link_to 'Edit', edit_job_path(@job) %> |
+    <%= link_to 'View applicants', job_bookings_path(@job) %> |
+  <% end %>
 <% end %>
 
 <% if current_user %>
-  <%= form_for @booking, url: user_bookings_path(current_user.id, job_id: params[:id]), method: :post do |x| %>
-    <%= x.submit 'Apply' %>
+  <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
+    <%= form_for @booking, url: user_bookings_path(current_user.id, job_id: params[:id]), method: :post do |x| %>
+      <%= x.submit 'Apply' %>
+    <% end %>
   <% end %>
 <% end %>
 <%= link_to 'Back', jobs_path %>
