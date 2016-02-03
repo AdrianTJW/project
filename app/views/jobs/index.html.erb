@@ -56,7 +56,8 @@
 
 <script type='text/javascript'>
   function createSidebarLi(json){
-   return ("<li><a>" + json.infowindow + "</a></li>");
+    debugger
+   return ("<li><a>" + json.infowindow[2] + "</a></li>");
   };
 
   function bindLiToMarker($li, marker){
