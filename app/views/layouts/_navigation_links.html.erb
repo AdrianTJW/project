@@ -10,26 +10,27 @@
 			<n3 style="color: white;">
 			Welcome, <%= current_user.fullname %>!</n3> </a>
 		<% end %>
-			<ul id="drop2" class="f-dropdown content" data-dropdown-content>
+			<ul id="drop2" class="f-dropdown content" data-dropdown-content style="background: #009481;">
 				<% if current_user %>
-	    		<li><%= link_to "My Profile", user_path(current_user.id) %></li>
+				<li><n4><%= link_to "View jobs", jobs_path %></n4> </li>
+	    		<li><n4><%= link_to "My Profile", user_path(current_user.id) %></n3></li>
 				<% elsif current_host %>
 	    		<% if current_host.verify_status == true %>
-	        	<li ><%= link_to "Create new job", new_job_path %> </li>
+	        	<p><a class="n5" href="/jobs/new">Create new job</a> </p>
 	    		<% end %>
-	   	 		<li><%= link_to "View jobs", jobs_path %> </li>
-	    		<li><%= link_to "My Profile", host_path(current_host.id) %> </li>
+	   	 		<p><n4><%= link_to "View jobs", jobs_path, class: "n5" %></n4> </p>
+	    		<p><n4><%= link_to "My Profile", host_path(current_host.id), class: "n5" %></n4></p>
 			<% end %>
 	    </ul>
 
 	</li>
 
 			<% if current_user %>
-				<li> <%= link_to "Log out - User", destroy_user_session_path ,method: :delete %> </li>
+				<li> <%= link_to "Log out", destroy_user_session_path ,method: :delete %> </li>
 			<% elsif current_host %>
-				<li> <%= link_to "Log out - Host", destroy_host_session_path ,method: :delete %> </li>
+				<li> <%= link_to "Log out", destroy_host_session_path ,method: :delete %> </li>
 			<% elsif current_admin %>
-				<%= link_to "Log out - Admin", destroy_admin_session_path ,method: :delete %>
+				<%= link_to "Log out", destroy_admin_session_path ,method: :delete %>
 				<% end %>
 <% else %>
 
