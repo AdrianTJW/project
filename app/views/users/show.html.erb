@@ -3,22 +3,24 @@
 <div class="row">
 	<div class="large-3 small-12 medium-4 columns ">
 		<% if current_user %>
-			<div class="panel">
-				<%= image_tag "current_user.image", class: "th" %>
+			<div class="column large-12 medium-12 small-12">
+				<%= image_tag current_user.image.url, class: "th" %>
 				<p>Name:    <%= current_user.fullname %></p>
 				<p>Email:   <%= current_user.email %></p>
 				<p>Contact: <%= current_user.contact %></p>
 			</div>
-			<div class="panel">
-				<%= link_to 'Edit', edit_user_path(@user) %> |
-				<%= link_to 'My applications', user_bookings_path(@user, @booking) %> |
-				<%= link_to 'Back', root_path %>
+			<div class="column large-12 medium-12 small-12">
+				<ul class="side-nav left" role="navigation" title="Link List" style="text-align: left;">
+				   <li role="menuitem"><%= link_to 'Edit', edit_user_path(@user) %> </li>
+				   <li role="menuitem"><%= link_to 'My applications', user_bookings_path(@user, @booking) %></li>
+				   <li role="menuitem"><%= link_to 'Back', root_path %></li>
+				</ul>
 			</div>
 		<% end %>
 
 		<% if current_host %>
 			<div class="panel">
-				<%= image_tag "@user.image", class: "th" %>
+				<%= image_tag @user.image.url, class: "th" %>
 				<p>Name:    <%= @user.fullname %></p>
 				<p>Email:   <%= @user.email %></p>
 				<p>Contact: <%= @user.contact %></p>
