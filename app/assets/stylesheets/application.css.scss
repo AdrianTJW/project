@@ -193,7 +193,15 @@ $icon-size: 2rem;
 #job_salary {
     margin-top:7px
 }
-
+.block {
+    border:1px solid;
+    border-color:black;
+    margin: 2rem;
+    padding: 1rem
+}
+.title {
+    background-color: grey;
+}
 /*Footer*/
 #footer {
 width: 100%;
@@ -205,4 +213,11 @@ color: #fff; /* choose any height */
 
 #footer p{
     font-size: 100%;
+}
+
+#sidebar_container {
+  height:50px; 
+  width:18%;
+  overflow:hidden; 
+  overflow-y:scroll;
 }
