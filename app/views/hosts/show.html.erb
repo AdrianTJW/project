@@ -1,10 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+	<div class="large-4 small-12 medium-4 column panel" style="background: #2d2d2d;">
+		<% if current_host %>
+			<div class="column large-12 medium-12 small-12">
+				<div class="column large-12 medium-12 small-12">
+				<img style="border-radius: 100%;" src="<%= current_host.image.url %>">
+				</div>
+				<div class="column large-12 medium-12 small-12" >
+				<n3 class="left" style="color: white; text-align: left;"> 
+					<%= current_host.fullname %> <br> <%= current_host.email %> <br> +60<%= current_host.contact %></n3>
 
-<%= current_host.image %>
-<%= current_host.fullname %>
-<%= current_host.email %>
-<%= current_host.contact %>
+				</div>
+			</div>
+	
+				<ul class="side-nav left" role="navigation" title="Link List" style="text-align: left; width: 250px;">
+				   <li role="menuitem"><n3><%= link_to 'Edit', edit_host_path(@host) %></n3> </li>
+				   <li role="menuitem"><n3><%= link_to 'My jobs', my_jobs_path(@host) %></n3></li>
+				   <li role="menuitem"><n3><%= link_to 'Back', root_path %></n3></li>
+				</ul>
+	
+		<% end %>
+	</div>
+	<div class="large-8 small-12 medium-8 column panel" style="background: #2d2d2d;">
 
-<%= link_to 'Edit', edit_host_path(@host) %> |
-<%= link_to 'My jobs', my_jobs_path(@host) %> |
-<%= link_to 'Back', root_path %>
+	</div>
+</div>
+
