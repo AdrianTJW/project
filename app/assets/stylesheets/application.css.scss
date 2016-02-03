@@ -61,6 +61,12 @@ n3 {
   color: black;
 }
 
+.n5 {
+  font-family: 'Raleway';
+  font-size: 18px;
+  color: white;
+}
+
 .n3 {
 	font-family: 'Raleway';
   font-size: 30px;
@@ -121,7 +127,7 @@ label {
 
 @media only screen and (min-width: 40.0625em) {
 .top-bar-section li:not(.has-form) a:not(.button):not(.submit):not(.button-xs) {
-    background: #3CC2A7;
+    background: transparent;
     line-height: 2.8125rem;
     padding: 0 0.9375rem;
 
@@ -258,4 +264,25 @@ $text-color: #fff;
   width:18%;
   overflow:hidden; 
   overflow-y:scroll;
+}
+
+
+.side-nav li a:not(.button):not(.submit):not(.button-xs) {
+    color: #f2f2f2;
+    }
+
+#browserother{
+ display:none;
+}
+
+#bar{
+ display:none;
+}
+
+#bar2{
+ display:none;
+}
+
+.f-dropdown.content.open {
+    background: #009481;
 }

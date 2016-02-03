@@ -26,9 +26,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # foundation front end framework
 gem 'foundation-rails'
-# carrierwave for image uploading
+# carrierwave for image uploading and fog for S3 Amazon Web Server
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
 # search function gem
 gem 'searchkick'
 # hides app ids and secrets
@@ -47,6 +48,9 @@ gem 'braintree'
 gem 'gmaps4rails'
 #autocomplete
 gem 'geocomplete_rails'
+#gem for email
+gem 'mail'
+gem 'sidekiq'
 
 #pagination
 gem 'will_paginate', '~> 3.0.6'

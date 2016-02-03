@@ -1,7 +1,8 @@
+
 <%= form_for(@job) do |f| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
+      <h4><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h4>
 
       <ul>
       <% @job.errors.full_messages.each do |message| %>
@@ -10,7 +11,7 @@
       </ul>
     </div>
   <% end %>
-
+<div class="column panel large-6 medium-12 small-12" style="background: white;">
   <div class="field">
     <%= f.label :company_name %><br>
     <%= f.text_field :company_name %>
@@ -34,33 +35,20 @@
             $(this).val('');  // clear the textbox
     });
   </script>
+</div>
+<div class="column panel large-6 medium-12 small-12" style="background: white;">
 
   <div class="field">
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
     <%= f.label :type %><br>
-    <%= f.select :type, "<option>WorkingHoliday</option><option>Internship</option><option>Volunteering</option><option>Bootcamp</option>".html_safe %>
-  </div>
-  <div class="field">
+    <%= f.select :type, '<option>-- Select an Option --</option><option value="WorkingHoliday">Working holiday</option><option value="Internship">Internship</option><option value="Volunteering">Volunteering</option><option value="Bootcamp">Bootcamp</option>'.html_safe, id: "job_type"  %>
+    </div>
+
+  <div class="field", id="browserother">
     <%= f.label :job_name %><br>
     <%= f.text_field :job_name %>
   </div>
   
-    
+  <div id= "bar">
   <div class="row">
     <%= f.label :salary %><br>
     <div class="small-9 medium-10 large-10 columns">
@@ -75,6 +63,41 @@
       <%= f.number_field :salary, value: 72  %>
     </div>
   </div>
+</div>
+
+  <div id= "bar2">
+  <div class="row">
+    <%= f.label :fees %><br>
+    <div class="small-9 medium-10 large-10 columns">
+      <div class="range-slider round" data-slider data-options="display_selector: #job_salary; step: 50; initial: 600; start: 500; end: 2000;">
+        <span class="range-slider-handle"></span>
+        <span class="range-slider-active-segment"></span>
+      </div>
+    </div>
+    <div class="small-3 medium-2 large-2 columns">
+      <!-- The display element (Tip: use CSS to perfectly position it) -->
+    
+      <%= f.number_field :salary, value: 72  %>
+    </div>
+  </div>
+</div>
+
+  <script type='text/javascript'>
+    $(document).ready(function(){
+      $("#job_type").change(function(){
+        if ($(this).val() == 'WorkingHoliday' || $(this).val() =='Internship') {
+          $('#browserother').show();
+          $('#bar').show();
+          $('#bar2').hide();
+        } else {
+          $('#browserother').hide();
+          $('#bar').hide();
+          $('#bar2').show();
+          }
+        });
+    });
+  </script>
+
 
   <div class="field">
     <%= f.label :images %><br>
@@ -89,7 +112,13 @@
     <%= f.date_select :end_date %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <button class="small middle alert button">
+      <h6 class="n4" style="color: white;">
+        Create
+      </h6>
+    </button>
   </div>
+</div>
+</div>
 <% end %>
 
