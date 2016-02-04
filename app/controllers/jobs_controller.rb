@@ -11,7 +11,7 @@ class JobsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
       marker.lat job.latitude
       marker.lng job.longitude
-      marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].to_s+'>'
+      marker.infowindow '<div class="column large-5 medium-5 small-5"><img src=' + job.images[0].large.to_s+'></div>' + '<div class="column large-7 medium-7 small-7">' + '<n3><div class="n4" style="font-size: 25px;">' + job.company_name + "</div>" + job.address + "</n3></div>"
     end
 
     if params[:query].present?

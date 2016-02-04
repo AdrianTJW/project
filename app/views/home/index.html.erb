@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="column large-4 small-12">
-				<%= submit_tag 'Start your journey here!', class: 'primary button' %>
+				<%= submit_tag 'Start your journey here!', class: 'success button n3', style: 'color: white; font-size: 20px;     background-color: #3CC2A7;' %>
 			</div>
 			<% end %>
 
@@ -32,7 +32,7 @@
 <div class="row" style="max-width: 85%;">
 	<div class="row">
 	<div class="row">
-		<n2 style="color: black; text-align:left;">Working holiday</n2>
+		<n2 style="color: black; text-align:left;">Travel while working at...</n2>
 	</div>
 		<% @workholiday.last(3).each do |x| %>
 		<div class="left column large-4 medium-4 small-12" style="max-width: 400px; max-height: 400px;">
@@ -42,7 +42,7 @@
 	</div>
 	<div class="row">
 		<div class="row">
-		<n2 style="color: black; text-align:left;">Internship</n2>
+		<n2 style="color: black; text-align:left;">Why intern in boring local?</n2>
 	</div>
 		<% @internship.last(3).each do |x| %>
 		<div class="left column large-4 medium-4 small-12" style="max-width: 400px; max-height: 400px;">
@@ -52,7 +52,7 @@
 	</div>
 	<div class="row">
 	<div class="row">
-		<n2 style="color: black; text-align:left;">Volunteering experience</n2>
+		<n2 style="color: black; text-align:left;">Volunteer yourself to help in these NGO!</n2>
 	</div>
 	<% @volunteer.last(3).each do |x| %>
 		<div class="left column large-4 medium-4 small-12" style="max-width: 400px; max-height: 400px;">
@@ -62,7 +62,7 @@
 	</div>
 	<div class="row">
 	<div class="row">
-		<n2 style="color: black; width: 80%;">World class bootcamp</n2>
+		<n2 style="color: black; width: 80%;">World class bootcamp here...</n2>
 	</div>
 	<% @bootcamp.last(3).each do |x| %>
 		<div class="left column large-4 medium-4 small-12" style="max-width: 400px; max-height: 400px;">
@@ -72,7 +72,8 @@
 	</div>
 </div>
 <br>
-<br>
+
+
 
 
 

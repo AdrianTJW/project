@@ -30,6 +30,8 @@ gem 'foundation-rails'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+# video plugin
+gem 'vider', github: 'wazery/vider'
 # search function gem
 gem 'searchkick'
 # hides app ids and secrets

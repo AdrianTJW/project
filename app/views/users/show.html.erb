@@ -1,7 +1,7 @@
 
 
 <div class="row">
-	<div class="large-4 small-12 medium-4 column panel" style="background: #bababa;">
+	<div class="large-4 small-12 medium-4 column panel" style="background: #2d2d2d;">
 		<% if current_user %>
 			<div class="column large-12 medium-12 small-12"  style="min-height: 300px;">
 				<div class="column large-12 medium-12 small-12">
@@ -23,29 +23,28 @@
 		<% end %>
 
 		<% if current_host %>
-			<div class="panel">
+			<div>
 				<img style="border-radius: 100%;" src="<%= @user.image.url %>">
-				<p><n3 class="left"> <%= @user.fullname %></n3></p>
-				<p><n3 class="left"> <%= @user.email %></n3></p>
-				<p><n3 class="left"> <%= @user.contact %></n3></p>
+				<p><n3 class="left" style="color: white;"> <%= @user.fullname %></n3></p>
+				<p><n3 class="left" style="color: white;"> <%= @user.email %></n3></p>
+				<p><n3 class="left" style="color: white;"> <%= @user.contact %></n3></p>
 			</div>
-			<div class="panel">
+			<div>
 				<% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
 					<% if @booking.acceptance == false %>
-						<%= link_to "Accept application", new_transaction_path(job_id: params[:job_id], booking_id: @booking.id) %>
+						<%= link_to "Accept application", new_transaction_path(job_id: params[:job_id], booking_id: @booking.id), class: "alert button" %>
 				  <% end %>
 				<% end %>
-				<%= link_to 'Back', job_bookings_path(@job.id) %>
+				<%= link_to 'Back', job_bookings_path(@job.id), class: "secondary button" %>
 			</div>
 		<% end %>
 	</div>
-	<div class="large-8 small-12 medium-8 columns ">
-		
-		<div class="panel">
-			
-		</div>
-		<div class="panel">
-
+	<div class="large-8 small-12 medium-8 columns ">		
+		<div class="row panel">
+			<h1 class="n4" style="font-size: 40px;">About Me</h1>
+			<div class="column panel large-12 medium-12 small-12" style="background: white;">
+				<h3 class="n4 left" style="font-size: 25px;">Nothing special about me.</h3>
+			</div>
 		</div>
 	</div>
 </div>

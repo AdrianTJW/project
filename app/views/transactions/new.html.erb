@@ -1,17 +1,20 @@
-<div class="form-container radius-box glassy-bg small-10 small-centered medium-8 large-6 columns">
-  <h2 class="mbs">New Transaction</h2>
+
+<div class="row panel" style="background: white;">
+  <h2 class="n4" style="font-size: 35px;">New Transaction</h2>
+  <div class="column panel large-6 medium-6 small-12">
   <%= form_tag transactions_path(job_id: params[:job_id], booking_id: params[:booking_id]) do%>
   	<% if current_user %>
 	  	<%= render 'customer_form' unless current_user.has_payment_info? %>
 	  <% else %>
 	  	<%= render 'customer_form' unless current_host.has_payment_info? %>
 	  <% end %>
-	  <p>Please enter your payment details:</p>
+	  <p class="n4 left">Please enter your payment details:</p>
 	  <div id="dropin"></div>
 	  <% if current_user %>
-	  	<%=submit_tag "Pay $#{@job.salary}", class: "button mt1" %>
+	  	<%=submit_tag "Pay $#{@job.salary}", class: "alert button" %>
 	  <% else %>
-	  	<%=submit_tag "Pay $#{number_with_precision(@job.salary * 0.05, precision: 2)}", class: "button mt1" %>
+	  	<%=submit_tag "Pay $#{number_with_precision(@job.salary * 0.05, precision: 2)}", class: "alert button" %>
 	  <% end %>
 	<%end%>
+</div>
 </div>

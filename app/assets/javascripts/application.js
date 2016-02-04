@@ -34,4 +34,3 @@ braintree.setup("CLIENT-TOKEN-FROM-SERVER", "dropin", {
   form: "checkout-form"
 });
 
-
