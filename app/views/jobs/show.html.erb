@@ -38,14 +38,23 @@
   <strong>Type:</strong>
   <%= @job.type %>
 </p>
-<p>
-  <strong>Job name:</strong>
-  <%= @job.job_name %>
-</p>
-<p>
-  <strong>Salary:</strong>
-  <%= @job.salary %>
-</p>
+<% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
+  <p>
+    <strong>Job name:</strong>
+    <%= @job.job_name %>
+  </p>
+<% end %>
+<% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
+  <p>
+    <strong>Salary:</strong>
+    <%= @job.salary %>
+  </p>
+<% else %>
+  <p>
+    <strong>Fees:</strong>
+    <%= @job.salary %>
+  </p>
+<% end %>
 <p>
   <strong>Start date:</strong>
   <%= @job.start_date %>

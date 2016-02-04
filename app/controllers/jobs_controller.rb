@@ -11,7 +11,7 @@ class JobsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
       marker.lat job.latitude
       marker.lng job.longitude
-      marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].large.to_s+'>'
+      marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].to_s+'>'
     end
 
     if params[:query].present?
@@ -54,7 +54,6 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    byebug
     @job = Job.new(job_params)
     @job.update(host_id: current_host.id)
 
