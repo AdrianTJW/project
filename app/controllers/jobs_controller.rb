@@ -7,8 +7,7 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.all
     @hosts = Host.all
-
-        
+ 
     @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
       marker.lat job.latitude
       marker.lng job.longitude
@@ -55,6 +54,7 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+    byebug
     @job = Job.new(job_params)
     @job.update(host_id: current_host.id)
 

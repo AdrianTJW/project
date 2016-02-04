@@ -64,7 +64,7 @@
   
   function createSidebarLi(json){
     return ("<li>" + json.infowindow + "</li>");
-   };
+  };
 
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
@@ -88,7 +88,6 @@
     var json_array = <%=raw @hash.to_json %>;
 
     var markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    // markers = handler.addMarkers(<%=raw @hash.to_json %>);
 
     _.each(json_array, function(json, index){
      json.marker = markers[index];
