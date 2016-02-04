@@ -11,7 +11,7 @@ class JobsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
       marker.lat job.latitude
       marker.lng job.longitude
-      marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].large.to_s+'>'
+      marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].to_s+'>'
     end
 
     if params[:query].present?
@@ -26,10 +26,10 @@ class JobsController < ApplicationController
 
   def my_index
     @jobs = Job.where(host_id: current_host.id)
-        respond_to do |format|
-        format.html
-        format.js
-      end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def autocomplete
@@ -119,6 +119,4 @@ class JobsController < ApplicationController
   def bootcamp_params
     params.require(:bootcamp).permit(:company_name, :description, :address, :country, :city, :type, :job_name, :salary, {images: []}, :start_date, :end_date, :host_id, :user_id, :content_id)
   end
-
-
 end
