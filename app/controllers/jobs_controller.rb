@@ -7,12 +7,11 @@ class JobsController < ApplicationController
   def index
     @jobs = Job.all
     @hosts = Host.all
-
-        
+ 
     @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
       marker.lat job.latitude
       marker.lng job.longitude
-      marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].to_s+'>'
+      marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].large.to_s+'>'
     end
 
     if params[:query].present?

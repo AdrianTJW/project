@@ -1,5 +1,5 @@
 class Job < ActiveRecord::Base
-validates :address, presence: true
+validates :type, presence: true
 geocoded_by :address
 reverse_geocoded_by :latitude, :longitude do |obj,results|
   if geo = results.first
