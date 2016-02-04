@@ -5,8 +5,8 @@
   
     <% if current_user %>
       <% @bookings.each do |booking| %>
-        <div class="column panel large-6 medium-6 small-12" style="background: white; min-height: 350px;">
-            <img src="<%= booking.job.images[0].url %>"><br>
+        <div class="column panel large-6 medium-6 small-12" style="background: white; min-height: 300px;">
+            <img src="<%= booking.job.images[0].url(:large) %>"><br>
             <n3><%= booking.job.company_name %><br></n3>
             <n3><%= booking.job.description %><br></n3>
             <n3><%= booking.job.city %> <br></n3> 
@@ -21,8 +21,8 @@
     <% if current_host %>
 
       <% @bookings.each do |booking| %>
-        <div class="column panel large-6 medium-6 small-12" style="background: white; min-height: 350px;">
-            <img src="<%= booking.user.image.url %>"><br>
+        <div class="column panel large-6 medium-6 small-12" style="background: white; min-height: 300px;">
+            <img src="<%= booking.user.image.url(:large) %>"><br>
             <n3><%= booking.user.fullname %><br></n3>
             <n3><%= booking.user.email %><br></n3>
             <n3><%= booking.user.contact %><br></n3>
