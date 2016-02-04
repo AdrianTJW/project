@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= transactions
-
 //= require foundation
 //= require_tree .
 //= require underscore

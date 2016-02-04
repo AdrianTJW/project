@@ -1,21 +1,22 @@
-<n3>My Jobs</n3>
+<div class="row panel">
+    <n3>My Jobs</n3>
 <div class="row">
 
     <% @jobs.each do |job| %>
-    <div class="column large-6 medium-6 small-12 panel">
+    <div class="column large-6 medium-6 small-12" style="min-height: 300px; max-height: 300px;">
         <n3><%= image_tag job.images.first %>
         <%= job.type %>
-        
+        <br>
         <%= job.country %>
-        <%= job.city %>
-        <%= job.job_name %>
-        <%= job.salary %>
+        <%= job.city %><br>
+        <%= job.job_name %><br>
+        $<%= job.salary %><br>
 
         <% if current_host || current_admin %>
           <% if job.host_id == current_host.id || current_admin %>
             <%= link_to 'Details', job %>
             <%= link_to 'Edit', edit_job_path(job) %>
-            <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' } %>
           <% end %>
         <% end %>
         <% if current_user %>
@@ -23,4 +24,5 @@
         <% end %>
       </div>
     <% end %>
+</div>
 </div>

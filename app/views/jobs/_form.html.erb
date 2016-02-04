@@ -74,7 +74,9 @@
       <br>
     <div class="field">
       <%= f.label :images %><br>
-      <%= f.file_field :images, multiple: true %>
+      <img id="img_prev" src="#" alt="your image" />
+      <%= f.file_field :images, multiple: true, onchange: "readURL(this);" %>
+      
     </div>
     <div class="field">
       <%= f.label :start_date %><br>

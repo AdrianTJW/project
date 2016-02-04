@@ -1,14 +1,19 @@
-
+<div class="row"> <n3>
 <p>
+
+  <% @job.images.each do |image| %>
+    <a href="<%= image.url %>"><%= image_tag image.url(:large) %></a>
+  <% end %>
+</p>
+<p>
+
   <strong>Company name:</strong>
   <%= @job.company_name %>
 </p>
-
 <p>
   <strong>Description:</strong>
   <%= @job.description %>
 </p>
-
 <p>
  <strong>Address:</strong>
  <%= @job.address %>
@@ -17,47 +22,39 @@
   <strong>Latitude:</strong>
   <%= @job.latitude %>
 </p>
-
 <p>
   <strong>Longitude:</strong>
   <%= @job.longitude %>
 </p>
-
 <p>
   <strong>Country:</strong>
   <%= @job.country %>
 </p>
-
 <p>
   <strong>City:</strong>
   <%= @job.city %>
 </p>
-
 <p>
   <strong>Type:</strong>
   <%= @job.type %>
 </p>
-
 <p>
   <strong>Job name:</strong>
   <%= @job.job_name %>
 </p>
-
 <p>
   <strong>Salary:</strong>
   <%= @job.salary %>
 </p>
-
-
 <p>
   <strong>Start date:</strong>
   <%= @job.start_date %>
 </p>
-
 <p>
   <strong>End date:</strong>
   <%= @job.end_date %>
 </p>
+</n3>
 
 <% if current_host || current_admin %>
   <% if @job.host_id == current_host.id && current_host.verify_status == true %>
@@ -80,3 +77,4 @@
   <% end %>
 <% end %>
 <%= link_to 'Back', jobs_path %>
+</div>

@@ -14,23 +14,20 @@
 	
 				<ul class="side-nav left" role="navigation" title="Link List" style="text-align: left; width: 250px;">
 				   <li role="menuitem"><n3><%= link_to 'Edit', edit_host_path(@host) %></n3> </li>
-				   <li role="menuitem"><n3><%= link_to 'My jobs', my_jobs_path(@host) %></n3></li>
+				   <div id="dot"><li role="menuitem"><n3><%= link_to 'My jobs', my_jobs_path(@host), remote: true %></n3></li></div>
 				   <li role="menuitem"><n3><%= link_to 'Back', root_path %></n3></li>
 				</ul>
 	
 		<% end %>
 	</div>
-	<div class="large-8 small-12 medium-8 column panel" style="background: #2d2d2d;">
+	<div class="large-8 small-12 medium-8 column panel" style="background: transparent;">
+		<div id = "div_id">
 
+		</div>
 	</div>
 </div>
 
 
-<%= link_to 'Edit', edit_host_path(@host) %> |
-<div id="dot"><%= link_to 'My jobs', my_jobs_path(@host), remote: true%></div> |</div>
-<%= link_to 'Back', root_path %>
 
-<div id = "div_id">
 
-</div>
 
