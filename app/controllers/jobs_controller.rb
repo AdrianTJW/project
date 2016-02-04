@@ -6,19 +6,18 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.all
-      
-     @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
-       marker.lat job.latitude
-       marker.lng job.longitude
-       # byebug
-       marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].to_s+'>'
+    @hosts = Host.all
+ 
+    @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
+      marker.lat job.latitude
+      marker.lng job.longitude
+      marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].large.to_s+'>'
     end
 
     if params[:query].present?
       @jobs = Job.search(params[:query], page: params[:page])
 
     else
-
       @jobs = Job.all.page params[:page]
       # @jobs = Job.all
       # @jobs= @jobs.paginate(per_page: 3, page: params[:page])
@@ -34,7 +33,7 @@ class JobsController < ApplicationController
   end
 
   def autocomplete
-    render json: Job.search(params[:query], autocomplete: true, limit: 10).map(&:country)
+    render json: Job.search(params[:query], autocomplete: true, limit: 6).map(&:country)
   end
 
   # GET /jobs/1
@@ -55,6 +54,7 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+    byebug
     @job = Job.new(job_params)
     @job.update(host_id: current_host.id)
 
