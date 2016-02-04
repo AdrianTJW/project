@@ -11,114 +11,111 @@
       </ul>
     </div>
   <% end %>
-<div class="column panel large-6 medium-12 small-12" style="background: white;">
-  <div class="field">
-    <%= f.label :company_name %><br>
-    <%= f.text_field :company_name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address, id: "special"%>
-  </div>
-  <div style='width: 100%; height: 25rem;'>
-    <div id="map" style='width: 100%; height: 24rem;'></div>
-  </div>
-  <script type='text/javascript'>
-    $("#special").geocomplete({
-      map: "#map"
-    });
-    $('#special').on('blur', function () {
-            $(this).val('');  // clear the textbox
-    });
-  </script>
-</div>
-<div class="column panel large-6 medium-12 small-12" style="background: white;">
-
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.select :type, '<option>-- Select an Option --</option><option value="WorkingHoliday">Working holiday</option><option value="Internship">Internship</option><option value="Volunteering">Volunteering</option><option value="Bootcamp">Bootcamp</option>'.html_safe, id: "job_type"  %>
-    </div>
-
-  <div class="field", id="browserother">
-    <%= f.label :job_name %><br>
-    <%= f.text_field :job_name %>
-  </div>
-  
-  <div id= "bar">
-  <div class="row">
-    <%= f.label :salary %><br>
-    <div class="small-9 medium-10 large-10 columns">
-      <div class="range-slider round" data-slider data-options="display_selector: #job_salary; step: 50; initial: 600; start: 500; end: 2000;">
-        <span class="range-slider-handle"></span>
-        <span class="range-slider-active-segment"></span>
-      </div>
-    </div>
-    <div class="small-3 medium-2 large-2 columns">
-      <!-- The display element (Tip: use CSS to perfectly position it) -->
-    
-      <%= f.number_field :salary, value: 72  %>
-    </div>
-  </div>
-</div>
-
-  <div id= "bar2">
-  <div class="row">
-    <%= f.label :fees %><br>
-    <div class="small-9 medium-10 large-10 columns">
-      <div class="range-slider round" data-slider data-options="display_selector: #job_salary; step: 50; initial: 600; start: 500; end: 2000;">
-        <span class="range-slider-handle"></span>
-        <span class="range-slider-active-segment"></span>
-      </div>
-    </div>
-    <div class="small-3 medium-2 large-2 columns">
-      <!-- The display element (Tip: use CSS to perfectly position it) -->
-    
-      <%= f.number_field :salary, value: 72  %>
-    </div>
-  </div>
-</div>
-
   <script type='text/javascript'>
     $(document).ready(function(){
       $("#job_type").change(function(){
         if ($(this).val() == 'WorkingHoliday' || $(this).val() =='Internship') {
-          $('#browserother').show();
-          $('#bar').show();
-          $('#bar2').hide();
+          
+          $('#salary').show();
+          $('#name').show();
+          $('#fee').hide();
         } else {
-          $('#browserother').hide();
-          $('#bar').hide();
-          $('#bar2').show();
+          $('#name').hide();
+          $('#fee').show();
+          $('#salary').hide();
+          
           }
         });
     });
-  </script>
+   </script>
+<br>
+<div class="row">
+  <div class="big-6 small-12 mid-12 panel columns">
+    <div class="field">
+      <%= f.label :company_name %><br>
+      <%= f.text_field :company_name %>
+    </div>
+    <div class="field">
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </div>
+    <div class="field">
+      <%= f.label :address %><br>
+      <%= f.text_field :address, id: "special"%>
+    </div>
+    <div style='width: 100%; height: 25rem;'>
+      <div id="map" style='width: 100%; height: 24rem;'></div>
+    </div>
+    <script type='text/javascript'>
+      $("#special").geocomplete({
+        map: "#map"
+      });
+      $('#special').on('blur', function () {
+              $(this).val('');  // clear the textbox
+      });
+    </script>
+  </div>
 
 
-  <div class="field">
-    <%= f.label :images %><br>
-    <%= f.file_field :images, multiple: true %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
-  </div>
-  <div class="actions">
-    <button class="small middle alert button">
-      <h6 class="n4" style="color: white;">
-        Create
-      </h6>
-    </button>
+  <div class="big-6 small-12 mid-12 panel columns">
+    <div class="field">
+      <%= f.label :type %><br>
+      <%= f.select :type, '<option>-- Select an Option --</option><option value="WorkingHoliday">Working holiday</option><option value="Internship">Internship</option><option value="Volunteering">Volunteering</option><option value="Bootcamp">Bootcamp</option>'.html_safe, id: "job_type"  %>
+    </div>
+  
+    <div class="field" id="name" style="display: none;">
+      <%= f.label :job_name %><br>
+      <%= f.text_field :job_name %>
+    </div>
+
+    <div class="row">
+      <div class="small-9 medium-9 large-9 columns">
+        <div id="salary"><%= f.label :salary %><br>
+        </div>
+        <div id="fee" style="display: none;"><%= f.label :fee %><br></div>
+        <div class="range-slider round" data-slider data-options="display_selector: #job_salary; step: 50; initial: 600; start: 500; end: 2000;">
+          <span class="range-slider-handle"></span>
+          <span class="range-slider-active-segment"></span>
+        </div>
+      </div>
+      <div class="small-3 medium-3 large-3 columns">
+        <br>
+        <!-- The display element (Tip: use CSS to perfectly position it) -->
+      
+        <%= f.number_field :salary, value: 72  %>
+      </div>
+    </div>
+
+
+      <br>
+    <div class="field">
+      <%= f.label :images %><br>
+      <%= f.file_field :images, multiple: true %>
+    </div>
+    <div class="field">
+      <%= f.label :start_date %><br>
+      <%= f.date_select :start_date %>
+    </div>
+    <div class="field">
+      <%= f.label :end_date %><br>
+      <%= f.date_select :end_date %>
+    </div>
+    <div class="actions">
+      <button class="small middle alert button">
+        <h6 class="n4" style="color: white;">
+          Create
+        </h6>
+      </button>
+    </div>
+  <% end %>
   </div>
 </div>
-</div>
-<% end %>
+
+
+
+
+
+
+
+
 
