@@ -6,12 +6,12 @@ class AddSeedToJobs < ActiveRecord::Migration
     end
     50.times do |i|
 	  Job.create(company_name: "company_name ##{i}", description: "fantasic job ", address: "statue of liberty", country: "India", city:"Bombay", type:"Bootcamp", job_name:"hard job", salary:"1000", start_date: "12/15/2015", end_date: "12/15/2015")
-	end
+	  end
   end
  
-  def down
-    Job.delete_all
-  end
+  # def down
+  #   Job.delete_all
+  # end
 
 
 #   def up

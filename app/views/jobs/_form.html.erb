@@ -11,26 +11,10 @@
       </ul>
     </div>
   <% end %>
-  <script type='text/javascript'>
-    $(document).ready(function(){
-      $("#job_type").change(function(){
-        if ($(this).val() == 'WorkingHoliday' || $(this).val() =='Internship') {
-          
-          $('#salary').show();
-          $('#name').show();
-          $('#fee').hide();
-        } else {
-          $('#name').hide();
-          $('#fee').show();
-          $('#salary').hide();
-          
-          }
-        });
-    });
-   </script>
+ 
 <br>
 <div class="row">
-  <div class="big-6 small-12 mid-12 panel columns">
+  <div class="large-6 small-12 medium-12 panel columns">
     <div class="field">
       <%= f.label :company_name %><br>
       <%= f.text_field :company_name %>
@@ -57,7 +41,7 @@
   </div>
 
 
-  <div class="big-6 small-12 mid-12 panel columns">
+  <div class="large-6 small-12 medium-12 panel columns">
     <div class="field">
       <%= f.label :type %><br>
       <%= f.select :type, '<option>-- Select an Option --</option><option value="WorkingHoliday">Working holiday</option><option value="Internship">Internship</option><option value="Volunteering">Volunteering</option><option value="Bootcamp">Bootcamp</option>'.html_safe, id: "job_type"  %>
@@ -73,7 +57,7 @@
         <div id="salary"><%= f.label :salary %><br>
         </div>
         <div id="fee" style="display: none;"><%= f.label :fee %><br></div>
-        <div class="range-slider round" data-slider data-options="display_selector: #job_salary; step: 50; initial: 600; start: 500; end: 2000;">
+        <div class="range-slider round" data-slider data-options="display_selector: #job_salary; step: 50; initial: 600; start: 0; end: 2000;">
           <span class="range-slider-handle"></span>
           <span class="range-slider-active-segment"></span>
         </div>
