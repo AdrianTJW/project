@@ -1,80 +1,73 @@
 <div class="row"> <n3>
+  
 <p>
+  <div class="column large-10 medium-9 small-6">
+    <h2 class="n4" style="font-size: 40px;"> <%= @job.type %> </h2>
+  </div>
+  <div class="column large-2 medium-3 small-6">
+    <%= link_to 'Back', jobs_path, class: 'small primary button n5' %>
+  </div>
+</p>
+    
+  <div class="column large-12">  
+        <% @job.images.each do |image| %>
+          <a href="<%= image.url %>"><%= image_tag image.url(:large) %></a>
+        <% end %>
+  </div>
 
-  <% @job.images.each do |image| %>
-    <a href="<%= image.url %>"><%= image_tag image.url(:large) %></a>
-  <% end %>
-</p>
-<p>
 
-  <strong>Company name:</strong>
-  <%= @job.company_name %>
-</p>
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
-<p>
- <strong>Address:</strong>
- <%= @job.address %>
-</p>
-<p>
-  <strong>Latitude:</strong>
-  <%= @job.latitude %>
-</p>
-<p>
-  <strong>Longitude:</strong>
-  <%= @job.longitude %>
-</p>
-<p>
-  <strong>Country:</strong>
-  <%= @job.country %>
-</p>
-<p>
-  <strong>City:</strong>
-  <%= @job.city %>
-</p>
-<p>
-  <strong>Type:</strong>
-  <%= @job.type %>
-</p>
-<p>
-  <strong>Job name:</strong>
-  <%= @job.job_name %>
-</p>
-<p>
-  <strong>Salary:</strong>
-  <%= @job.salary %>
-</p>
-<p>
-  <strong>Start date:</strong>
-  <%= @job.start_date %>
-</p>
-<p>
-  <strong>End date:</strong>
-  <%= @job.end_date %>
-</p>
-</n3>
+ <div class="column panel left large-12 medium-12 small-12">
+        <div class="left"><strong>Company name:</strong>
+        <%= @job.company_name %></div><br>
 
-<% if current_host || current_admin %>
-  <% if @job.host_id == current_host.id && current_host.verify_status == true %>
-    <%= link_to 'Edit', edit_job_path(@job) %> |
-    <%= link_to 'View applicants', job_bookings_path(@job) %> |
-  <% end %>
-<% end %>
+        <div class="left"><strong>Description:</strong>
+        <%= @job.description %></div><br>
+ 
+        <div class="left"><strong>Address:</strong>
+       <%= @job.address %></div><br>
+    
+        <div class="left"><strong>Country:</strong>
+        <%= @job.country %></div><br>
+ 
+        <div class="left"><strong>City:</strong>
+        <%= @job.city %></div><br>
 
-<% if current_user %>
-  <% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
-    <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
-      <%= form_for @booking, url: user_bookings_path(current_user.id, job_id: params[:id]), method: :post do |x| %>
-        <%= x.submit 'Apply' %>
+        <div class="left"><strong>Type:</strong>
+        <%= @job.type %></div><br>
+
+        <div class="left"><strong>Job name:</strong>
+        <%= @job.job_name %></div><br>
+
+        <div class="left"><strong>Salary:</strong>
+        <%= @job.salary %></div><br>
+
+        <div class="left"><strong>Start date:</strong>
+        <%= @job.start_date %></div><br>
+
+        <div class="left"><strong>End date:</strong>
+        <%= @job.end_date %></div><br>
+
+      </n3><br>
+
+      <% if current_host || current_admin %>
+        <% if @job.host_id == current_host.id && current_host.verify_status == true %>
+          <%= link_to 'Edit', edit_job_path(@job), class: 'small success button n5' %> 
+          <%= link_to 'View applicants', job_bookings_path(@job), class: 'small alert button n5' %> 
+        <% end %>
       <% end %>
-    <% end %>
-  <% else %>
-    <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
-      <%= link_to "Apply", new_transaction_path(:job_id => params[:id]) %>
-    <% end %>
-  <% end %>
-<% end %>
-<%= link_to 'Back', jobs_path %>
+
+      <% if current_user %>
+        <% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
+          <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
+            <%= form_for @booking, url: user_bookings_path(current_user.id, job_id: params[:id]), method: :post do |x| %>
+              <%= x.submit 'Apply' %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
+            <%= link_to "Apply", new_transaction_path(:job_id => params[:id]) %>
+          <% end %>
+        <% end %>
+      <% end %>
+  </div>
 </div>

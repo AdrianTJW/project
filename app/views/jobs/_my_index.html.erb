@@ -1,28 +1,31 @@
-<div class="row panel">
-    <n3>My Jobs</n3>
-<div class="row">
+<div class="row panel" style="background: transparent;">
+    <n3 style="font-size: 40px;">My Jobs</n3>
+  <div class="row">
 
-    <% @jobs.each do |job| %>
-    <div class="column large-6 medium-6 small-12" style="min-height: 300px; max-height: 300px;">
-        <n3><%= image_tag job.images.first %>
-        <%= job.type %>
-        <br>
-        <%= job.country %>
-        <%= job.city %><br>
-        <%= job.job_name %><br>
-        $<%= job.salary %><br>
-
-        <% if current_host || current_admin %>
-          <% if job.host_id == current_host.id || current_admin %>
-            <%= link_to 'Details', job %>
-            <%= link_to 'Edit', edit_job_path(job) %>
-            <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        <% end %>
-        <% if current_user %>
-          <%= link_to 'More details...', job %><n3>
-        <% end %>
-      </div>
-    <% end %>
-</div>
+      <% @jobs.each do |job| %>
+      <div class="column large-12 medium-12 small-12 panel">
+        <div class="left column large-3 medium-12 small-12">
+          <n3><%= image_tag job.images.first, style: "max-height: 200px; max-width: 200px;" %></div>
+          <div class="left column large-9 medium-12 small-12">        
+              <div class="column left large-6"><%= job.type %></div>
+              <div class="column right large-6" style="float: right;"><%= job.city %></div>
+              <div class="column right large-6" style="float: right;"><%= job.country %></div>
+              <div class="column left large-6"><%= job.job_name %></div>
+              <div class="column large-5 medium-5 small-3" style="left: 50px;"><n3 style="font-size: 25px;">$<%= job.salary %></n3></div>
+              <div class="column right large-7 medium-7 small-9" style="left: 50px;">
+              <% if current_host || current_admin %>
+                <% if job.host_id == current_host.id || current_admin %>
+                  <%= link_to 'Details', job, class: 'tiny alert button n5' %>
+                  <%= link_to 'Edit', edit_job_path(job), class: 'tiny primary button n5' %>
+                  <%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'tiny primary button n5' %>
+                <% end %>
+              <% end %>
+              <% if current_user %>
+                <%= link_to 'More details...', job %><n3>
+              <% end %>
+              </div>
+          </div>
+        </div>
+       <% end %>
+  </div>
 </div>

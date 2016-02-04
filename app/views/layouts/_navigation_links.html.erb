@@ -12,11 +12,11 @@
 		<% end %>
 			<ul id="drop2" class="f-dropdown content" data-dropdown-content style="background: #009481;">
 				<% if current_user %>
-				<li><n4><%= link_to "View jobs", jobs_path %></n4> </li>
-	    		<li><n4><%= link_to "My Profile", user_path(current_user.id) %></n3></li>
+				<p><n4><%= link_to "View jobs", jobs_path, class: "n5" %></n4> </p>
+	    		<p><n4><%= link_to "My Profile", user_path(current_user.id), class: "n5" %></n4></p>
 				<% elsif current_host %>
 	    		<% if current_host.verify_status == true %>
-	        	<p><a class="n5" href="/jobs/new">Create new job</a> </p>
+	        	<p><a class="n5" href="/jobs/new">Create job</a> </p>
 	    		<% end %>
 	   	 		<p><n4><%= link_to "View jobs", jobs_path, class: "n5" %></n4> </p>
 	    		<p><n4><%= link_to "My Profile", host_path(current_host.id), class: "n5" %></n4></p>

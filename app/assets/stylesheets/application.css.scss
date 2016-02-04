@@ -17,7 +17,7 @@
 /*General*/
 
  .travork {
-  background-image:url(http://cdn.pcwallart.com/images/australia-mountain-scenery-wallpaper-3.jpg);
+  background-image:url(http://45.media.tumblr.com/9bb367c8afc2e3fc43a3a894150337aa/tumblr_mx6l47PbIL1qbyxr0o1_400.gif);
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -286,3 +286,45 @@ $text-color: #fff;
 .f-dropdown.content.open {
     background: #009481;
 }
+
+   div.transbox
+  {
+  width:400px;
+  height:400px;
+  margin:130px 150px;
+  background-color:black;
+  border:1px solid black;
+  opacity:0.9;
+  filter:alpha(opacity=60); /* For IE8 and earlier */
+  }
+div.transbox p
+  {
+  margin:30px 40px;
+  font-weight:bold;
+  color:#000000;
+  }
+    .movie{
+      display:none;
+    }
+ 
+    .content{
+      width:900px;
+      position:relative;
+      top:100px;
+      margin:0 auto;
+    }
+ 
+    p{
+      margin-bottom:15px;
+      padding:10px;
+    }
+ 
+    #bgndEl{
+      position:relative;
+      margin:0 auto;
+      width:900px;
+      height:400px;
+      background: #000;
+      opacity:0.4;
+      filter:alpha(opacity=40);
+    }
