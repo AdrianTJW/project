@@ -9,19 +9,16 @@ class JobsController < ApplicationController
     @hosts = Host.all
 
         
-     @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
-       marker.lat job.latitude
-       marker.lng job.longitude
-       a = job.images[0].to_s
-       marker.infowindow [job.company_name, job.address, a]
-       # marker.infowindow job.company_name+ "<br>"+job.address
+    @hash = Gmaps4rails.build_markers(@jobs) do |job, marker|
+      marker.lat job.latitude
+      marker.lng job.longitude
+      marker.infowindow job.company_name+ "<br>"+job.address+ '<br><img src=' + job.images[0].to_s+'>'
     end
 
     if params[:query].present?
       @jobs = Job.search(params[:query], page: params[:page])
 
     else
-
       @jobs = Job.all.page params[:page]
       # @jobs = Job.all
       # @jobs= @jobs.paginate(per_page: 3, page: params[:page])
