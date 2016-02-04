@@ -55,6 +55,7 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
+    byebug
     @job = Job.new(job_params)
     @job.update(host_id: current_host.id)
 
