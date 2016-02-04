@@ -56,12 +56,12 @@
 
 <script type='text/javascript'>
   function createSidebarLi(json){
-   return ("<li><a>" + json.infowindow + "</a></li>");
+   return ("<li>" + json.infowindow + "</li>");
   };
 
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
-      handler.getMap().setZoom(5);
+      handler.getMap().setZoom(10);
       marker.setMap(handler.getMap()); //because clusterer removes map property from marker
       marker.panTo();
       google.maps.event.trigger(marker.getServiceObject(), 'click');
@@ -81,7 +81,6 @@
     var json_array = <%=raw @hash.to_json %>;
 
     var markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    // markers = handler.addMarkers(<%=raw @hash.to_json %>);
 
     _.each(json_array, function(json, index){
      json.marker = markers[index];
