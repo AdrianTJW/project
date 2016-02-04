@@ -37,9 +37,9 @@
 		<n2 style="color: black; text-align:left;">Travel while working at...</n2>
 	</div>
 		<% @workholiday.last(3).each do |x| %>
-		<div class="left column large-4 medium-4 small-12">
-		<%= x.description %>
-		<%= link_to image_tag("https://store.ragan.com/images/image/Y5TP07.jpg"), x %>
+		<div class="left column large-4 medium-4 small-12" style="max-width: 400px; max-height: 400px;">
+		<%= x.type %>
+		<%= link_to image_tag("http://2ktravelagency.com/wp-content/uploads/2015/11/hot-air-balloon-cappadocia2-600x600.jpg"), x %>
 		</div>
 		<% end %>
 	</div>
@@ -48,9 +48,9 @@
 		<n2 style="color: black; text-align:left;">Internship at here...</n2>
 	</div>
 		<% @internship.last(3).each do |x| %>
-		<div class="left column large-4 medium-4 small-12">
-		<%= x.description %>
-		<%= link_to image_tag("https://store.ragan.com/images/image/Y5TP07.jpg"), x %>
+		<div class="left column large-4 medium-4 small-12" style="max-width: 400px; max-height: 400px;">
+		<%= x.type %>
+		<%= link_to image_tag("http://2ktravelagency.com/wp-content/uploads/2015/11/hot-air-balloon-cappadocia2-600x600.jpg"), x %>
 		</div>
 		<% end %>
 	</div>
@@ -59,9 +59,9 @@
 		<n2 style="color: black; text-align:left;">Volunteering experience different here...</n2>
 	</div>
 	<% @volunteer.last(3).each do |x| %>
-		<div class="left column large-4 medium-4 small-12">
-		<%= x.description %>
-		<%= link_to image_tag("https://store.ragan.com/images/image/Y5TP07.jpg"), x %>
+		<div class="left column large-4 medium-4 small-12" style="max-width: 400px; max-height: 400px;">
+		<%= x.type %>
+		<%= link_to image_tag("http://2ktravelagency.com/wp-content/uploads/2015/11/hot-air-balloon-cappadocia2-600x600.jpg"), x %>
 		</div>
 		<% end %>
 	</div>
@@ -70,9 +70,9 @@
 		<n2 style="color: black; width: 80%;">World class bootcamp here...</n2>
 	</div>
 	<% @bootcamp.last(3).each do |x| %>
-		<div class="left column large-4 medium-4 small-12">
-		<%= x.description %>
-		<%= link_to image_tag("https://store.ragan.com/images/image/Y5TP07.jpg"), x %>
+		<div class="left column large-4 medium-4 small-12" style="max-width: 400px; max-height: 400px;">
+		<%= x.type %>
+		<%= link_to image_tag("http://2ktravelagency.com/wp-content/uploads/2015/11/hot-air-balloon-cappadocia2-600x600.jpg"), x %>
 		</div>
 		<% end %>
 	</div>

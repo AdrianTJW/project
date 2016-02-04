@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
 
 <h1>Listing Bookings</h1>
 
@@ -6,7 +6,7 @@
   <% @bookings.each do |booking| %>
     <ul>
       <li>
-        <%= booking.job.images[0] %><br>
+        <img src="<%= booking.job.images[0].url %>"><br>
         <%= booking.job.company_name %><br>
         <%= booking.job.description %><br>
         <%= booking.job.city %>, <%= booking.job.country %><br>
@@ -22,7 +22,7 @@
   <% @bookings.each do |booking| %>
     <ul>
       <li>
-        <%= booking.user.image %><br>
+        <img src="<%= booking.user.image.url %>"><br>
         <%= booking.user.fullname %><br>
         <%= booking.user.email %><br>
         <%= link_to 'See profile', user_path(booking.user_id, :job_id => booking.job_id) %>
@@ -31,4 +31,4 @@
     </ul>
   <% end %>
 <% end %>
-
+</div>

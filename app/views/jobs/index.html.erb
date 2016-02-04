@@ -1,8 +1,8 @@
 
+<div class="row panel">
+  <n3 style="font-size: 40px;">Search your job here!</n3>
 <div class="row">
-<n3 style="font-size: 40px;">Search your job here!</n3>
-<div class="row">
-    
+  
     <div class="column large-6 medium-6 small-12">
       <div class="listings-search">
         <%= form_tag jobs_path, method: :get do %>
@@ -12,56 +12,63 @@
       </div>
     </div>
     <div class="column large-6 medium-6 small-12">
-      <%= submit_tag 'Start your journey here!', class: 'primary button' %>
+      <%= submit_tag 'Start your journey here!', class: 'alert button' %>
       <% end%>
     </div>
   </div>
 </div>
-<table>
 
 
   <div class="row">
     <% @jobs.each do |job| %>
-    <div class="column large-6 medium-6 small-12 panel">
-        <n3><%= image_tag job.images.first %>
-        <%= job.type %>
-        
-        <%= job.country %>
-        <%= job.city %>
-        <%= job.job_name %>
-        <%= job.salary %>
+      <div class="column large-6 medium-12 small-12 panel" style="min-height: 200px; max-height: 200px;">
+          <div class="left column large-5 medium-4 small-4">
+            <%= image_tag job.images.first, style: "width: 120px; height: 120px;" %>
+          </div>
+          <div class="column large-7 medium-8 small-8">
+            <n3 class="left" style="font-size: 25px;"><strong><%= job.type %></strong>
+            
+            <%= job.country %>
+            <%= job.city %>
+            <%= job.job_name %>
+            <%= job.salary %>
 
-        <% if current_host || current_admin %>
-          <% if job.host_id == current_host.id || current_admin %>
-            <%= link_to 'Details', job %>
-            <%= link_to 'Edit', edit_job_path(job) %>
-            <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
-        <% end %>
-        <% if current_user %>
-          <%= link_to 'More details...', job %><n3>
-        <% end %>
+            <% if current_host || current_admin %>
+              <% if job.host_id == current_host.id || current_admin %>
+                <%= link_to 'Details', job %>
+                <%= link_to 'Edit', edit_job_path(job) %>
+                <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            <% end %>
+            <% if current_user %>
+              <%= link_to 'More details...', job %><n3>
+            <% end %>
+          </div>
       </div>
     <% end %>
+    <n4> <%= will_paginate @jobs %> </n4>
   </div>
 
 <br>
 
-<n3> <%= will_paginate @jobs %> </n3>
-
-  <div style='width: 800px;'>
-   <div id="map" style='width: 500px; height: 400px;'></div>
+<div class="row">
+  <div class="column large-6 medium-6 small-12 panel">
+    <div style='width: 800px;'>
+      <div id="map" style='width: 450px; height: 400px;'></div>
+    </div>
   </div>
-<div id='sidebar_container'></div>
-
+  <div class="left column large-6 medium-6 small-12 panel">
+    <div class="left" id='sidebar_container'></div>
+  </div>
 <script type='text/javascript'>
   function createSidebarLi(json){
-   return ("<li><a>" + json.infowindow[2] + "</a></li>");
+
+   return ("<div class='row'><ul class='left'>" + "<a><img src="+ json.infowindow[2] + "><li>"  + json.infowindow[1]  + "</li></a></ul></row><br>");
   };
 
   function bindLiToMarker($li, marker){
     $li.on('click', function(){
-      handler.getMap().setZoom(5);
+      handler.getMap().setZoom(12);
       marker.setMap(handler.getMap()); //because clusterer removes map property from marker
       marker.panTo();
       google.maps.event.trigger(marker.getServiceObject(), 'click');
