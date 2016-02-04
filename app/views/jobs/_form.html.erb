@@ -23,21 +23,20 @@
           $('#name').hide();
           $('#fee').show();
           $('#salary').hide();
-          
           }
         });
     });
    </script>
 <br>
 <div class="row">
-  <div class="big-6 small-12 mid-12 panel columns">
+  <div class="big-6 small-12 mid-12 panel columns" id="create">
     <div class="field">
       <%= f.label :company_name %><br>
-      <%= f.text_field :company_name %>
+      <%= f.text_field :company_name, id: "company_name" %>
     </div>
     <div class="field">
       <%= f.label :description %><br>
-      <%= f.text_field :description %>
+      <%= f.text_field :description, id: "description" %>
     </div>
     <div class="field">
       <%= f.label :address %><br>
@@ -60,12 +59,13 @@
   <div class="big-6 small-12 mid-12 panel columns">
     <div class="field">
       <%= f.label :type %><br>
-      <%= f.select :type, '<option>-- Select an Option --</option><option value="WorkingHoliday">Working holiday</option><option value="Internship">Internship</option><option value="Volunteering">Volunteering</option><option value="Bootcamp">Bootcamp</option>'.html_safe, id: "job_type"  %>
+      
+      <%= f.select :type, '<option selected disabled value="">Select Type</option><option value="WorkingHoliday">Working holiday</option><option value="Internship">Internship</option><option value="Volunteering">Volunteering</option><option value="Bootcamp">Bootcamp</option>'.html_safe, id: "job_type"  %>
     </div>
   
     <div class="field" id="name" style="display: none;">
       <%= f.label :job_name %><br>
-      <%= f.text_field :job_name %>
+      <%= f.text_field :job_name, id: "job_name" %>
     </div>
 
     <div class="row">
@@ -94,19 +94,42 @@
     </div>
     <div class="field">
       <%= f.label :start_date %><br>
-      <%= f.date_select :start_date %>
+      <%= f.date_select :start_date, id: "start_date" %>
     </div>
     <div class="field">
       <%= f.label :end_date %><br>
-      <%= f.date_select :end_date %>
+      <%= f.date_select :end_date, id: "end_date" %>
     </div>
     <div class="actions">
-      <button class="small middle alert button">
+      <button class="small middle alert button" id="enter">
         <h6 class="n4" style="color: white;">
           Create
         </h6>
       </button>
     </div>
+     <script type='text/javascript'>
+  $(document).ready(function(){
+    $('#enter').prop('disabled', true);
+$('#company_name, #description, #special, #salary, #job_name, #job_type, #start_date, #end_date').keyup(function() {
+
+var empty1 = false;
+$('#company_name, #description, #special, #job_type').each(function() {
+if ($(this).val() === '') {
+ empty1 = true;
+}
+});
+
+if (empty1) {
+$('#enter').attr('disabled', 'disabled');
+} else {
+//$('#register').removeAttr('disabled');
+     $('#enter').prop("disabled", false);
+}
+});
+});
+
+
+     </script>
   <% end %>
   </div>
 </div>
