@@ -3,11 +3,11 @@
 		<% if current_host %>
 			<div class="column large-12 medium-12 small-12">
 				<div class="column large-12 medium-12 small-12">
-				<img style="border-radius: 100%;" src="<%= current_host.image.url %>">
+				<img style="border-radius: 100%;" src="<%= current_host.image.url(:profile) %>">
 				</div>
 				<div class="column large-12 medium-12 small-12" >
 				<n3 class="left" style="color: white; text-align: left;"> 
-					<%= current_host.fullname %> <br> <%= current_host.email %> <br> +60<%= current_host.contact %></n3>
+					<%= current_host.fullname %> <br> <%= current_host.email %> <br> <%= current_host.contact %></n3>
 
 				</div>
 			</div>
@@ -24,7 +24,12 @@
 
 
 		<div id = "div_id">
-				
+			<div class="row panel">
+			<h1 class="n4" style="font-size: 40px;">About Me</h1>
+			<div class="column panel large-12 medium-12 small-12" style="background: white;">
+				<h3 class="n4 left" style="font-size: 25px;">Nothing special about me.</h3>
+			</div>
+		</div>
 		</div>
 	</div>
 

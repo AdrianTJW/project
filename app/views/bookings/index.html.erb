@@ -1,34 +1,35 @@
-<div class="row">
+<div class="row panel" style="min-height: 600px;">
 
-<h1>Listing Bookings</h1>
+<h1 class="n4" style="font-size: 40px;">Applications</h1>
+  
+  
+    <% if current_user %>
+      <% @bookings.each do |booking| %>
+        <div class="column panel large-6 medium-6 small-12" style="background: white; min-height: 350px;">
+            <img src="<%= booking.job.images[0].url %>"><br>
+            <n3><%= booking.job.company_name %><br></n3>
+            <n3><%= booking.job.description %><br></n3>
+            <n3><%= booking.job.city %> <br></n3> 
+            <n3><%= booking.job.country %><br></n3>
+            <%= link_to 'View', job_path(booking.job_id), class: "success button" %>
+            <%= link_to 'Delete Application', user_booking_path(booking.user_id, booking.id), class: "success button", method: :delete, data: { confirm: 'Are you sure?' } %> 
+            <%= link_to 'Back', user_path(current_user.id), class: "secondary button" %>
+        </div>
+        <% end %>
+      <% end %>
 
-<% if current_user %>
-  <% @bookings.each do |booking| %>
-    <ul>
-      <li>
-        <img src="<%= booking.job.images[0].url %>"><br>
-        <%= booking.job.company_name %><br>
-        <%= booking.job.description %><br>
-        <%= booking.job.city %>, <%= booking.job.country %><br>
-        <%= link_to 'Show', job_path(booking.job_id) %> |
-        <%= link_to 'Destroy', user_booking_path(booking.user_id, booking.id), method: :delete, data: { confirm: 'Are you sure?' } %> |
-        <%= link_to 'Back', user_path(current_user.id) %>
-      </li>
-    </ul>
-  <% end %>
-<% end %>
+    <% if current_host %>
 
-<% if current_host %>
-  <% @bookings.each do |booking| %>
-    <ul>
-      <li>
-        <img src="<%= booking.user.image.url %>"><br>
-        <%= booking.user.fullname %><br>
-        <%= booking.user.email %><br>
-        <%= link_to 'See profile', user_path(booking.user_id, :job_id => booking.job_id) %>
-        <%= link_to 'Back', job_path(booking.job_id) %>
-      </li>
-    </ul>
-  <% end %>
-<% end %>
+      <% @bookings.each do |booking| %>
+        <div class="column panel large-6 medium-6 small-12" style="background: white; min-height: 350px;">
+            <img src="<%= booking.user.image.url %>"><br>
+            <n3><%= booking.user.fullname %><br></n3>
+            <n3><%= booking.user.email %><br></n3>
+            <n3><%= booking.user.contact %><br></n3>
+            <%= link_to 'View Profile', user_path(booking.user_id, :job_id => booking.job_id), class: "success button" %>
+            <%= link_to 'Back', job_path(booking.job_id), class: "secondary button" %>
+        </div>   
+        <% end %>
+      <% end %>
+ 
 </div>

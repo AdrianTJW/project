@@ -260,7 +260,7 @@ $text-color: #fff;
 }
 
 #sidebar_container {
-  height:500px; 
+  height:400px; 
   width:100%;
   overflow:hidden; 
   overflow-y:scroll;
@@ -287,44 +287,4 @@ $text-color: #fff;
     background: #009481;
 }
 
-   div.transbox
-  {
-  width:400px;
-  height:400px;
-  margin:130px 150px;
-  background-color:black;
-  border:1px solid black;
-  opacity:0.9;
-  filter:alpha(opacity=60); /* For IE8 and earlier */
-  }
-div.transbox p
-  {
-  margin:30px 40px;
-  font-weight:bold;
-  color:#000000;
-  }
-    .movie{
-      display:none;
-    }
- 
-    .content{
-      width:900px;
-      position:relative;
-      top:100px;
-      margin:0 auto;
-    }
- 
-    p{
-      margin-bottom:15px;
-      padding:10px;
-    }
- 
-    #bgndEl{
-      position:relative;
-      margin:0 auto;
-      width:900px;
-      height:400px;
-      background: #000;
-      opacity:0.4;
-      filter:alpha(opacity=40);
-    }
+   

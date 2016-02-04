@@ -9,14 +9,16 @@
   </div>
 </p>
     
-  <div class="column large-12">  
-        <% @job.images.each do |image| %>
-          <a href="<%= image.url %>"><%= image_tag image.url(:large) %></a>
-        <% end %>
-  </div>
+
+
 
 
  <div class="column panel left large-12 medium-12 small-12">
+      <div class="row">
+         <div><% @job.images.each do |image| %>
+          <a href="<%= image.url %>"><%= image_tag image.url(:large) %></a>
+        <% end %></div>
+      </div><br>
         <div class="left"><strong>Company name:</strong>
         <%= @job.company_name %></div><br>
 
@@ -35,11 +37,17 @@
         <div class="left"><strong>Type:</strong>
         <%= @job.type %></div><br>
 
-        <div class="left"><strong>Job name:</strong>
-        <%= @job.job_name %></div><br>
-
-        <div class="left"><strong>Salary:</strong>
-        <%= @job.salary %></div><br>
+        <% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
+            <div class="left"><strong>Job name:</strong>
+            <%= @job.job_name %></div><br>
+        <% end %>
+        <% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
+            <div class="left"><strong>Salary:</strong>
+            <%= @job.salary %></div><br>
+        <% else %>
+            <div class="left"><strong>Fees:</strong>
+            <%= @job.salary %></div><br>
+        <% end %>
 
         <div class="left"><strong>Start date:</strong>
         <%= @job.start_date %></div><br>
@@ -60,12 +68,12 @@
         <% if @job.type == "WorkingHoliday" || @job.type == "Internship" %>
           <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
             <%= form_for @booking, url: user_bookings_path(current_user.id, job_id: params[:id]), method: :post do |x| %>
-              <%= x.submit 'Apply' %>
+              <%= x.submit 'Apply', class: 'small alert button n5' %>
             <% end %>
           <% end %>
         <% else %>
           <% unless current_user.bookings.where(user_id: current_user.id, job_id: params[:id]).any? %>
-            <%= link_to "Apply", new_transaction_path(:job_id => params[:id]) %>
+            <%= link_to "Apply", new_transaction_path(:job_id => params[:id]), class: 'small alert button n5' %>
           <% end %>
         <% end %>
       <% end %>

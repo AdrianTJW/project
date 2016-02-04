@@ -11,7 +11,11 @@
       </ul>
     </div>
   <% end %>
+
   
+
+
+
   <script type='text/javascript'>
     $(document).ready(function(){
       $("#job_type").change(function(){
@@ -30,7 +34,10 @@
    </script>
 <br>
 <div class="row">
-  <div class="big-6 small-12 mid-12 panel columns" id="create">
+  <div class="large-6 small-12 medium-12 panel columns" id="create">
+
+
+
     <div class="field">
       <%= f.label :company_name %><br>
       <%= f.text_field :company_name, id: "company_name" %>
@@ -64,7 +71,7 @@
       <%= f.select :type, '<option selected disabled value="">Select Type</option><option value="WorkingHoliday">Working holiday</option><option value="Internship">Internship</option><option value="Volunteering">Volunteering</option><option value="Bootcamp">Bootcamp</option>'.html_safe, id: "job_type"  %>
     </div>
   
-    <div class="field" id="name" style="display: none;">
+    <div class="field" id="name">
       <%= f.label :job_name %><br>
       <%= f.text_field :job_name, id: "job_name" %>
     </div>
@@ -86,9 +93,24 @@
         <%= f.number_field :salary, value: 72  %>
       </div>
     </div>
-
-
       <br>
+
+          <script>
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            $('#img_prev')
+              .attr('src', e.target.result)
+              .height(250);
+          };
+
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+    </script>
+
     <div class="field">
       <%= f.label :images %><br>
       <img id="img_prev" src="#" alt="your image" />

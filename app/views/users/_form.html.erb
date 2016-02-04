@@ -1,4 +1,5 @@
-<%= form_for(@user) do |f| %>
+<div class="row panel">
+  <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,6 +12,7 @@
     </div>
   <% end %>
 
+  <div class="column large-6 medium-6 small-12">
   <% if current_user.uid.nil? %>
     <div class="field">
       <%= f.label :fullname %><br>
@@ -31,8 +33,14 @@
   </div>
 
 
-  <div class="actions">
-    <%= f.submit %>
+   <div class="actions">
+      <button class="small alert left button">
+  <h6 class="n4" style="color: white; font-size: 15px;">
+    Edit
+    </h6>
+    </button>
   </div>
-  <%= link_to "Change your password", edit_user_registration_path %>
+  <%= link_to "Change your password", edit_user_registration_path, class: "small secondary button" %>
+</div>
 <% end %>
+</div>

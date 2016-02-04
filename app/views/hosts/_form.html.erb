@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-
+<div class="panel">
   <div class="field">
     <%= f.label :fullname %><br>
     <%= f.text_field :fullname %>
@@ -28,8 +28,13 @@
     <%= f.text_field :contact %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+<div class="actions">
+      <button class="small alert left button">
+  <h6 class="n4" style="color: white; font-size: 15px;">
+    Update
+    </h6>
+    </button>
   </div>
-  <%= link_to "Change your password", edit_host_registration_path %>
+  <%= link_to "Change your password", edit_host_registration_path, class: "small secondary button" %>
 <% end %>
+</div>
