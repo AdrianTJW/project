@@ -14,6 +14,7 @@ class JobsController < ApplicationController
        marker.lng job.longitude
        a = job.images[0].to_s
        marker.infowindow [job.company_name, job.address, a]
+       # marker.infowindow job.company_name+ "<br>"+job.address
     end
 
     if params[:query].present?
@@ -36,7 +37,7 @@ class JobsController < ApplicationController
   end
 
   def autocomplete
-    render json: Job.search(params[:query], autocomplete: true, limit: 10).map(&:country)
+    render json: Job.search(params[:query], autocomplete: true, limit: 6).map(&:country)
   end
 
   # GET /jobs/1

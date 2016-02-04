@@ -1,5 +1,7 @@
-
+<div class="row"> <n3>
 <p>
+  <img src="<%= @job.images[0].url %>" >
+  <br>
   <strong>Company name:</strong>
   <%= @job.company_name %>
 </p>
@@ -58,6 +60,7 @@
   <strong>End date:</strong>
   <%= @job.end_date %>
 </p>
+</n3>
 
 <% if current_host || current_admin %>
   <% if @job.host_id == current_host.id && current_host.verify_status == true %>
@@ -80,3 +83,4 @@
   <% end %>
 <% end %>
 <%= link_to 'Back', jobs_path %>
+</div>

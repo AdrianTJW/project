@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
   def new
     if current_user || current_host
       @job = Job.find_by(id: params[:job_id])
-      @client_token = generate_client_token
+      gon.client_token = generate_client_token
       if params[:booking_id].nil? == false
         @booking = Booking.find_by(id: params[:booking_id])
       end
@@ -61,7 +61,7 @@ class TransactionsController < ApplicationController
       end
     else
       flash[:alert] = "Something went wrong while processing your transaction. Please try again!"
-      @client_token = generate_client_token
+      gon.client_token = generate_client_token
       render :new
     end
   end
